@@ -19,7 +19,7 @@ namespace Provoke.Models
 
         [Required]
         public bool published { get; set; }
-        public int placeHolderId { get; set; }
+        public int placeholderId { get; set; }
 
     }
 }
