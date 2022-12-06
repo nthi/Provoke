@@ -7,6 +7,7 @@ using Provoke.Models;
 using System.Linq;
 using Microsoft.Extensions.Hosting;
 using Provoke.Utils;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Provoke.Repositories
 {
@@ -20,8 +21,6 @@ namespace Provoke.Repositories
         }
 
         //for GetAllPublishedDraftsByUserId , getallunpublished, and add(newdraftfromreader), how do I incorporate quote and quote's author?
-        //quote = reader.GetString(reader.GetOrdinal("quote")),
-        //author = reader.GetString(reader.GetOrdinal("author"))
         //i'll have to do new draft from reader a different way, so I think I should refactor for expediency. just build the draft in these methods.
         //if I did use the newdfr I need conditionals if placeholder, then grab these things
 
@@ -44,7 +43,7 @@ namespace Provoke.Repositories
 
                     while (reader.Read())
                     {
-                        drafts.Add(new Draft()
+                        Draft draft = new Draft()
                         {
                             id = reader.GetInt32(reader.GetOrdinal("id")),
                             userId = reader.GetInt32(reader.GetOrdinal("userId")),
@@ -55,14 +54,12 @@ namespace Provoke.Repositories
                             placeholder = new Placeholder()
                             //quote = reader.GetString(reader.GetOrdinal("quote")),
                             //author = reader.GetString(reader.GetOrdinal("author"))
-                        }
-                        if (DBUtils.IsNotDbNull(reader, "placeholderId")
+                        };
+                        if (DBUtils.IsNotDbNull(reader, "placeholderId"))
                             {
-                            quote = reader.GetString(reader.GetOrdinal("quote")),
-                            author = reader.GetString(reader.GetOrdinal("author"))
-                        }
-
-                        );
+                            draft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
+                            draft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
+                            }                       
                     }
 
                     reader.Close();
