@@ -69,7 +69,7 @@ namespace Provoke.Repositories
             }
         }
 
-        public List<Draft> GetAllUnpublishedDrafts()
+        public List<Draft> GetAllUnpublishedDraftsByUserId(int id)
         {
             using (var conn = Connection)
             {
