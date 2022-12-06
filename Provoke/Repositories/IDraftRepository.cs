@@ -5,7 +5,7 @@ namespace Provoke.Repositories
 {
     public interface IDraftRepository
     {
-        List<Draft> GetAllPublishedDrafts();
-        List<Draft> GetAllUnpublishedDrafts();
+        List<Draft> GetAllPublishedDraftsByUserId(int id);
+        List<Draft> GetAllUnpublishedDraftsByUserId(int id);
     }
 }

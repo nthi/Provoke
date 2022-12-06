@@ -33,9 +33,12 @@ namespace Provoke
             //services.AddTransient<IPlaceholderRepository, PlaceholderRepository>();
 
             services.AddControllers();
+            
+            //Tried adding ResolveConflictingActions to resolve an issue in DraftController. Did not fix, also did not break code. Leaving for now.
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Provoke", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
         }
 

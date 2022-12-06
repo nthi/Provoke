@@ -8,17 +8,13 @@ using System.Linq;
 using Microsoft.Extensions.Hosting;
 using Provoke.Utils;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Azure.Identity;
 
 namespace Provoke.Repositories
 {
     public class DraftRepository : BaseRepository, IDraftRepository
     {
         public DraftRepository(IConfiguration configuration) : base(configuration) { }
-
-        public List<Draft> GetAllPublishedDrafts()
-        {
-            throw new NotImplementedException();
-        }
 
         //for GetAllPublishedDraftsByUserId , getallunpublished, and add(newdraftfromreader), how do I incorporate quote and quote's author?
         //i'll have to do new draft from reader a different way, so I think I should refactor for expediency. just build the draft in these methods.
@@ -113,6 +109,8 @@ namespace Provoke.Repositories
                 }
             }
         }
+
+        // create an AddNewPublishedDraft and an AddNewUnpublishedDraft
 
         //Keeping just in case, probably not going to utilize this
         //private Draft NewDraftFromReader(SqlDataReader reader)
