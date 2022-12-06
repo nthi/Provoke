@@ -88,6 +88,23 @@ namespace Provoke.Repositories
 
                     while (reader.Read())
                     {
+                        Draft draft = new Draft()
+                        {
+                            id = reader.GetInt32(reader.GetOrdinal("id")),
+                            userId = reader.GetInt32(reader.GetOrdinal("userId")),
+                            title = reader.GetString(reader.GetOrdinal("title")),
+                            content = reader.GetString(reader.GetOrdinal("content")),
+                            dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
+                            published = reader.GetBoolean(reader.GetOrdinal("published")),
+                            placeholder = new Placeholder()
+                            //quote = reader.GetString(reader.GetOrdinal("quote")),
+                            //author = reader.GetString(reader.GetOrdinal("author"))
+                        };
+                        if (DBUtils.IsNotDbNull(reader, "placeholderId"))
+                        {
+                            draft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
+                            draft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
+                        }
                     }
 
                     reader.Close();
