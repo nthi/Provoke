@@ -28,34 +28,45 @@ namespace Provoke.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                       SELECT d.id, d.userId, d.title, d.content, d.dateCreated, d.published, p.quote, p.author
+                       SELECT d.id AS draftId, d.userId, d.title, d.content, d.dateCreated, d.published, d.placeholderId, p.quote, p.author
                          FROM Draft d
 							LEFT JOIN Placeholder p ON d.placeholderId = p.id
                         WHERE published = 1 AND d.userId = @userId
                         ORDER BY dateCreated DESC";
+                    cmd.Parameters.AddWithValue("@userId", id);
                     var reader = cmd.ExecuteReader();
 
                     var drafts = new List<Draft>();
 
                     while (reader.Read())
                     {
-                        Draft draft = new Draft()
+                        var draftId = reader.GetInt32(reader.GetOrdinal("draftId"));
+
+
+                        var existingDraft = drafts.FirstOrDefault(d => d.id == draftId);
+                        if (existingDraft == null)
                         {
-                            id = reader.GetInt32(reader.GetOrdinal("id")),
-                            userId = reader.GetInt32(reader.GetOrdinal("userId")),
-                            title = reader.GetString(reader.GetOrdinal("title")),
-                            content = reader.GetString(reader.GetOrdinal("content")),
-                            dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
-                            published = reader.GetBoolean(reader.GetOrdinal("published")),
-                            placeholder = new Placeholder()
-                            //quote = reader.GetString(reader.GetOrdinal("quote")),
-                            //author = reader.GetString(reader.GetOrdinal("author"))
-                        };
-                        if (DbUtils.IsNotDbNull(reader, "placeholderId"))
+                            existingDraft = new Draft()
                             {
-                            draft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
-                            draft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
-                            }                       
+
+
+                                userId = reader.GetInt32(reader.GetOrdinal("userId")),
+                                title = reader.GetString(reader.GetOrdinal("title")),
+                                content = reader.GetString(reader.GetOrdinal("content")),
+                                dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
+                                published = reader.GetBoolean(reader.GetOrdinal("published")),
+                                placeholderId = reader.GetInt32(reader.GetOrdinal("placeholderId")),
+                                placeholder = new Placeholder()
+                                //quote = reader.GetString(reader.GetOrdinal("quote")),
+                                //author = reader.GetString(reader.GetOrdinal("author"))
+                            };
+                        drafts.Add(existingDraft);
+                        if (DbUtils.IsNotDbNull(reader, "placeholderId"))
+                        {
+                            existingDraft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
+                            existingDraft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
+                        }
+                        }
                     }
 
                     reader.Close();
