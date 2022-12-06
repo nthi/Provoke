@@ -30,7 +30,7 @@ namespace Provoke
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IDraftRepository, DraftRepository>();
-            services.AddTransient<IPlaceholderRepository, PlaceholderRepository>();
+            //services.AddTransient<IPlaceholderRepository, PlaceholderRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

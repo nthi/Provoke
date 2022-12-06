@@ -21,6 +21,8 @@ namespace Provoke.Repositories
         //for GetAllPublishedDraftsByUserId , getallunpublished, and add(newdraftfromreader), how do I incorporate quote and quote's author?
         //quote = reader.GetString(reader.GetOrdinal("quote")),
         //author = reader.GetString(reader.GetOrdinal("author"))
+        //i'll have to do new draft from reader a different way, so I think I should refactor for expediency. just build the draft in these methods.
+        //if I did use the newdfr I need conditionals if placeholder, then grab these things
 
         public List<Draft> GetAllPublishedDraftsByUserId(int id)
         {
@@ -90,6 +92,7 @@ namespace Provoke.Repositories
                 dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
                 published = reader.GetBoolean(reader.GetOrdinal("published")),
                 placeholderId = reader.GetInt32(reader.GetOrdinal("placeholderId")),
+
             };
         }
 
