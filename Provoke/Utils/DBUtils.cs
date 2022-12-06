@@ -6,7 +6,7 @@ namespace Provoke.Utils
     /// <summary>
     ///  A set of useful function for interacting with ADO.NET
     /// </summary>
-    public class DBUtils
+    public class DbUtils
     {
         /// <summary>
         ///  Get a string from a data reader object and gracefully handle NULL values

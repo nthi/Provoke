@@ -24,14 +24,14 @@ namespace Provoke.Controllers
         // GET published drafts by user id
         //specify a specific route for this and the unpublished list
         //looks like I can add to HttpGet or add another set of brackets with [Route("api/[controller]/[action]")] info Or [Route("GetPublishedById")] or similar.
-        [HttpGet("{id}")]
+        [HttpGet("getpublished/{id}")]
         public IActionResult GetPublishedByUser(int id)
         {
             return Ok(_draftRepository.GetAllPublishedDraftsByUserId(id));
         }
 
         //GET unpublished drafts by user id
-        [HttpGet("{id}")]
+        [HttpGet("getunpublished/{id}")]
         public IActionResult GetUnpublishedByUser(int id)
         {
             return Ok(_draftRepository.GetAllUnpublishedDraftsByUserId(id));

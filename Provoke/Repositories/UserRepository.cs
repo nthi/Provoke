@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Provoke.Models;
 //using Provoke.Utils;
 using System.Linq;
+using Provoke.Utils;
 
 namespace Provoke.Repositories
 {
@@ -50,7 +51,29 @@ namespace Provoke.Repositories
                     }
                 }
             }
+        }
+        //add a get by email method and endpoint in controller
+        public void AddUser(User user)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO [User] (firstName, lastName, userName, email, normalMode)
+                   OUTPUT INSERTED.ID
+                   VALUES (@firstName, @lastName,  @userName, @email,  0)";
+                    DbUtils.AddParameter(cmd, "@firstName", user.firstName);
+                    DbUtils.AddParameter(cmd, "@lastName", user.lastName);
+                    DbUtils.AddParameter(cmd, "@userName", user.userName);
+                    DbUtils.AddParameter(cmd, "@email", user.email);
+                    DbUtils.AddParameter(cmd, "@normalMode", 0);
 
+
+                    user.id = (int)cmd.ExecuteScalar();
+
+                }
+            }
         }
     }
 }

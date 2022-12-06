@@ -51,7 +51,7 @@ namespace Provoke.Repositories
                             //quote = reader.GetString(reader.GetOrdinal("quote")),
                             //author = reader.GetString(reader.GetOrdinal("author"))
                         };
-                        if (DBUtils.IsNotDbNull(reader, "placeholderId"))
+                        if (DbUtils.IsNotDbNull(reader, "placeholderId"))
                             {
                             draft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
                             draft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
@@ -96,7 +96,7 @@ namespace Provoke.Repositories
                             //quote = reader.GetString(reader.GetOrdinal("quote")),
                             //author = reader.GetString(reader.GetOrdinal("author"))
                         };
-                        if (DBUtils.IsNotDbNull(reader, "placeholderId"))
+                        if (DbUtils.IsNotDbNull(reader, "placeholderId"))
                         {
                             draft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
                             draft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));

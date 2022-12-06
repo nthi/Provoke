@@ -4,6 +4,7 @@ namespace Provoke.Repositories
 {
     public interface IUserRepository
     {
-        User GetUserById(int id);
+        public User GetUserById(int id);
+        public void AddUser(User user);
     }
 }
