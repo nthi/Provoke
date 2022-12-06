@@ -6,6 +6,7 @@ using Provoke.Models;
 //using Provoke.Utils;
 using System.Linq;
 using Microsoft.Extensions.Hosting;
+using Provoke.Utils;
 
 namespace Provoke.Repositories
 {
@@ -43,7 +44,25 @@ namespace Provoke.Repositories
 
                     while (reader.Read())
                     {
-                        drafts.Add(NewDraftFromReader(reader));
+                        drafts.Add(new Draft()
+                        {
+                            id = reader.GetInt32(reader.GetOrdinal("id")),
+                            userId = reader.GetInt32(reader.GetOrdinal("userId")),
+                            title = reader.GetString(reader.GetOrdinal("title")),
+                            content = reader.GetString(reader.GetOrdinal("content")),
+                            dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
+                            published = reader.GetBoolean(reader.GetOrdinal("published")),
+                            placeholder = new Placeholder()
+                            //quote = reader.GetString(reader.GetOrdinal("quote")),
+                            //author = reader.GetString(reader.GetOrdinal("author"))
+                        }
+                        if (DBUtils.IsNotDbNull(reader, "placeholderId")
+                            {
+                            quote = reader.GetString(reader.GetOrdinal("quote")),
+                            author = reader.GetString(reader.GetOrdinal("author"))
+                        }
+
+                        );
                     }
 
                     reader.Close();
@@ -72,7 +91,6 @@ namespace Provoke.Repositories
 
                     while (reader.Read())
                     {
-                        drafts.Add(NewDraftFromReader(reader));
                     }
 
                     reader.Close();
@@ -81,20 +99,22 @@ namespace Provoke.Repositories
                 }
             }
         }
-        private Draft NewDraftFromReader(SqlDataReader reader)
-        {
-            return new Draft()
-            {
-                id = reader.GetInt32(reader.GetOrdinal("id")),
-                userId = reader.GetInt32(reader.GetOrdinal("userId")),
-                title = reader.GetString(reader.GetOrdinal("title")),
-                content = reader.GetString(reader.GetOrdinal("content")),
-                dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
-                published = reader.GetBoolean(reader.GetOrdinal("published")),
-                placeholderId = reader.GetInt32(reader.GetOrdinal("placeholderId")),
 
-            };
-        }
+        //Keeping just in case, probably not going to utilize this
+        //private Draft NewDraftFromReader(SqlDataReader reader)
+        //{
+        //    return new Draft()
+        //    {
+        //        id = reader.GetInt32(reader.GetOrdinal("id")),
+        //        userId = reader.GetInt32(reader.GetOrdinal("userId")),
+        //        title = reader.GetString(reader.GetOrdinal("title")),
+        //        content = reader.GetString(reader.GetOrdinal("content")),
+        //        dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
+        //        published = reader.GetBoolean(reader.GetOrdinal("published")),
+        //        placeholderId = reader.GetInt32(reader.GetOrdinal("placeholderId")),
+
+        //    };
+        //}
 
 
     }
