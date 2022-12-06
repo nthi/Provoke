@@ -21,7 +21,7 @@ namespace Provoke.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                                      SELECT id, firstName, lastName,                        userName, email, normalMode
+                                      SELECT id, firstName, lastName, userName, email, normalMode
                                       FROM[User]
                                       WHERE id = @id";
 
@@ -52,7 +52,43 @@ namespace Provoke.Repositories
                 }
             }
         }
-        //add a get by email method and endpoint in controller
+        //get by email method TODO: endpoint in controller
+        public User GetByEmail(string email)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                                      SELECT id, firstName, lastName, userName, email, normalMode
+                                      FROM[User]
+                                      WHERE Email = @email";
+
+                    DbUtils.AddParameter(cmd, "@email", email);
+
+                    User user = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        user = new User()
+                        {
+                            id = DbUtils.GetInt(reader, "id"),
+                            firstName = DbUtils.GetString(reader, "firstName"),
+                            lastName = DbUtils.GetString(reader, "lastName"),
+                            userName = DbUtils.GetString(reader, "userName"),
+                            email = DbUtils.GetString(reader, "email"),
+                            normalMode = reader.GetBoolean(reader.GetOrdinal("normalMode")),
+                        };
+                    }
+                    reader.Close();
+
+                    return user;
+                }
+            }
+        }
+
         public void AddUser(User user)
         {
             using (var conn = Connection)
