@@ -73,9 +73,11 @@ namespace Provoke.Controllers
         }
 
         //// DELETE api/<UserController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            _userRepository.DeleteUser(id);
+            return NoContent();
+        }
     }
 }
