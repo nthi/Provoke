@@ -55,7 +55,7 @@ namespace Provoke.Repositories
                                 placeholder = new Placeholder()
                             };
                             drafts.Add(existingDraft);
-                            if (DbUtils.IsNotDbNull(reader, "placeholderId"))
+                            if (existingDraft.placeholderId != 8)
                             {
                                 existingDraft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
                                 existingDraft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
@@ -69,6 +69,7 @@ namespace Provoke.Repositories
                 }
             }
         }
+        //if I want empty string when a nulled out placeholder quote/author, I might need to add an "else" to the conditionals in these two getby methods
 
         public List<Draft> GetAllUnpublishedDraftsByUserId(int id)
         {
@@ -107,14 +108,13 @@ namespace Provoke.Repositories
                                 placeholder = new Placeholder()
                             };
                             drafts.Add(existingDraft);
-                            if (DbUtils.IsNotDbNull(reader, "placeholderId"))
+                            if (existingDraft.placeholderId != 8)
                             {
                                 existingDraft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
                                 existingDraft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
                             }
                         }
                     }
-
                     reader.Close();
 
                     return drafts;
@@ -146,6 +146,34 @@ namespace Provoke.Repositories
             }
         }
 
+        //public void Edit(Draft draft)
+        //{
+        //    using (var conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (var cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = @"
+        //                    UPDATE Post
+        //                            SET
+        //                                  Title = @title,
+        //                                  Content = @content,
+        //                                  ImageLocation = @imageLocation,
+        //                                  CategoryId = @categoryId,
+        //                                  IsApproved = @isApproved
+        //                            WHERE Id = @id";
+
+        //            cmd.Parameters.AddWithValue("@title", post.Title);
+        //            cmd.Parameters.AddWithValue("@content", post.Content);
+        //            cmd.Parameters.AddWithValue("@imageLocation", DbUtils.ValueOrDBNull(post.ImageLocation));
+        //            cmd.Parameters.AddWithValue("@categoryId", post.CategoryId);
+        //            cmd.Parameters.AddWithValue("@isApproved", post.IsApproved);
+        //            cmd.Parameters.AddWithValue("@id", post.Id);
+
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
         
         //Keeping just in case, probably not going to utilize this
         //private Draft NewDraftFromReader(SqlDataReader reader)
