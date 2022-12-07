@@ -59,10 +59,18 @@ namespace Provoke.Controllers
         }
 
         // PUT api/<UserController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, User user)
+        {
+
+            _userRepository.UpdateUser(id, user);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
 
         //// DELETE api/<UserController>/5
         //[HttpDelete("{id}")]
