@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Provoke.Models;
 using Provoke.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -37,11 +39,15 @@ namespace Provoke.Controllers
             return Ok(_draftRepository.GetAllUnpublishedDraftsByUserId(id));
         }
 
+        //if I'm just going to a list page with no details then return NoContent() instead of OK(...) or CreatedAtAction(...) is fine
+        //don't forget to refresh list on client side
         // POST api/<DraftController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        [HttpPost]
+        public IActionResult AddNewDraft(Draft draft)
+        {
+            _draftRepository.AddNewDraft(draft);
+            return NoContent();
+        }
 
         // PUT api/<DraftController>/5
         //[HttpPut("{id}")]

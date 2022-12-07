@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Provoke.Utils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Azure.Identity;
+using System.Threading.Tasks.Dataflow;
 
 namespace Provoke.Repositories
 {
@@ -121,6 +122,33 @@ namespace Provoke.Repositories
             }
         }
         // create an AddNewPublishedDraft and an AddNewUnpublishedDraft
+        public void AddNewDraft(Draft draft)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                                      INSERT INTO Draft
+                                      (userId, title, content, dateCreated, published, placeholderId)
+                                      OUTPUT INSERTED.ID
+                                      VALUES (@userId,@title, @content, @dateCreated, @published, @placeholderId);";
+                    cmd.Parameters.AddWithValue("@userId", draft.userId);
+                    cmd.Parameters.AddWithValue("@title", draft.title);
+                    cmd.Parameters.AddWithValue("@content", draft.content);
+                    cmd.Parameters.AddWithValue("@dateCreated", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@published", draft.published);
+                   cmd.Parameters.AddWithValue("@placeholderId", draft.placeholderId);
+                    
+                    draft.id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        //write conditional if placeholder is null or not
+        //google how to insert NULL as sql param
+        //if not null, keep line 143
 
         //Keeping just in case, probably not going to utilize this
         //private Draft NewDraftFromReader(SqlDataReader reader)
