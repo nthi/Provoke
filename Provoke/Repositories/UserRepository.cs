@@ -139,5 +139,19 @@ namespace Provoke.Repositories
                 }
             }
         }
+
+        public void DeleteUser(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"DELETE FROM [User] WHERE Id = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

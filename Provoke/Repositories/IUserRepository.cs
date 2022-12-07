@@ -8,5 +8,6 @@ namespace Provoke.Repositories
         public User GetByEmail(string email);
         public void AddUser(User user);
         public void UpdateUser(int id, User user);
+        public void DeleteUser(int id);
     }
 }
