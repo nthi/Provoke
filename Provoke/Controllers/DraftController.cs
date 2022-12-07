@@ -39,14 +39,14 @@ namespace Provoke.Controllers
             return Ok(_draftRepository.GetAllUnpublishedDraftsByUserId(id));
         }
 
-        //drafts are posting if i run sql query, but swagger gives me message "No route matches the supplied values" on created at action result.
-        //in a previous similar issue, I simply hadn't set up what correlates to the "Get" in this example, BUT I'm not sure what I want to have there. I have two types of get already. I think I need to know what the reason for a CreatedAtAction is-- is it to get everything current after a POST?
+        //if I'm just going to a list page with no details then return NoContent() instead of OK(...) or CreatedAtAction(...) is fine
+        //don't forget to refresh list on client side
         // POST api/<DraftController>
         [HttpPost]
         public IActionResult AddNewDraft(Draft draft)
         {
             _draftRepository.AddNewDraft(draft);
-            return CreatedAtAction("Get", new { id = draft.id }, draft);
+            return NoContent();
         }
 
         // PUT api/<DraftController>/5
