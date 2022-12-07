@@ -9,5 +9,6 @@ namespace Provoke.Repositories
         List<Draft> GetAllUnpublishedDraftsByUserId(int id);
         public void AddNewDraft(Draft draft);
         public void Delete(int id);
+        public void Edit(Draft draft);
     }
 }
