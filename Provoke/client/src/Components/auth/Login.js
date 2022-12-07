@@ -23,8 +23,7 @@ export const Login = () => {
                     window.alert("Invalid login")
                 }
             }
-    }
-
+    
     return (
         <main className="container--login">
             <section>
