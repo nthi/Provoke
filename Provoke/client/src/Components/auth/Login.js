@@ -1,63 +1,49 @@
-//This module allows a registered user to log in using a valid email address.
-//Module also includes an alert for incorrect login information and a link to allow new users to register.
+import React, { useState } from "react";
+// import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { useNavigate, Link } from "react-router-dom";
+import { login } from "../../Managers/UserManager";
 
-import React, { useState } from "react"
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"
-import { register } from "../../Managers/UserManager";
+export default function Login({ setIsLoggedIn }) {
+  const navigate = useNavigate();
 
-export const Login = () => {
-    const [email, set] = useState("");
-    const [password, setPassword] = useState();
-    const navigate = useNavigate()
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-    const handleLogin = (e) => {
-        e.preventDefault();
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    login({ email, password })
+      .then(r => {
+        console.log(r)
+        if (r){
+          setIsLoggedIn(true)
+          navigate('/')
+        }
+        else { //invalid email or password will hit here
+          alert("Invalid email or password")
+        }
+      })
+  };
 
-        login({ email, password })
-        .then 
-            {
-            navigate("/")
-            }
-                else {
-                    window.alert("Invalid login")
-                }
-            }
-    
-    return (
-        <main className="container--login">
-            <section>
-                <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Provoke</h1>
-                    <h2>Sign In</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> User Email </label>
-                        <input type="email"
-                            value={email}
-                            onChange={evt => set(evt.target.value)}
-                            className="form-control"
-                            placeholder="Email address"
-                            required autoFocus />
-                    </fieldset>
-                    <fieldset>
-                    <label htmlFor="inputEmail"> Password </label>
-                        <input type="password"
-                            value={password}
-                            onChange={evt => set(evt.target.value)}
-                            className="form-control"
-                            placeholder="Swordfish"
-                            required autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <button type="submit">
-                            SUBMIT
-                        </button>
-                    </fieldset>
-                </form>
-            </section>
-            <section className="link--register">
-                <Link to="/register">Unprovoked? CLICK HERE to register</Link>
-            </section>
-        </main>
-    )
+  return (
+    <div className="m-5">
+      <Form onSubmit={loginSubmit}>
+        <fieldset>
+          <FormGroup>
+            <Label for="email">Email</Label>
+            <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Button>Login</Button>
+          </FormGroup>
+          <em>
+            Not registered? <Link to="/register">Register</Link>
+          </em>
+        </fieldset>
+      </Form>
+    </div>
+  );
 }
