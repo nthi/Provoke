@@ -56,9 +56,11 @@ namespace Provoke.Controllers
         //}
 
         // DELETE api/<DraftController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _draftRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
