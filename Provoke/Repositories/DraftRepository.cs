@@ -146,10 +146,7 @@ namespace Provoke.Repositories
             }
         }
 
-        //write conditional if placeholder is null or not
-        //google how to insert NULL as sql param
-        //if not null, keep line 143
-
+        
         //Keeping just in case, probably not going to utilize this
         //private Draft NewDraftFromReader(SqlDataReader reader)
         //{
@@ -166,6 +163,24 @@ namespace Provoke.Repositories
         //    };
         //}
 
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        DELETE FROM Draft
+                        WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
     }
 }
