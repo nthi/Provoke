@@ -3,8 +3,8 @@ const apiUrl = "https://localhost:5001";
 export const login = (userObject) => {
     return fetch(`${apiUrl}/api/User/GetByEmail?email=${userObject.email}`)
     .then((r) => r.json())
-      .then((userProfile) => {
-        if(userProfile.id){
+      .then((user) => {
+        if(user.id){
           localStorage.setItem("user", JSON.stringify(user));
           return user
         }
@@ -21,7 +21,7 @@ export const logout = () => {
 export const getCurrentUser = () => {
     const currentUser = localStorage.getItem("user");
 
-    return JSON.parse(user);  //JSON.parse()  the local user object coming back from API to use properties of that object
+    return JSON.parse(currentUser);  //JSON.parse()  the local user object coming back from API to use properties of that object
   };
 
 

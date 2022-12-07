@@ -38,10 +38,10 @@ export default function Register ({ setIsLoggedIn })
             <label htmlFor="lastName">Last Name</label>
             <input id="lastName" type="text" onChange={e => setLastName(e.target.value)} />
           </fieldset>
-          <fieldset>
+          {/* <fieldset>
             <label htmlFor="userName">Nom de Guerre</label>
             <input id="userName" type="text" onChange={e => setuserName(e.target.value)} />
-          </fieldset>
+          </fieldset> */}
           <fieldset>
             <label for="email">Email</label>
             <input id="email" type="text" onChange={e => setEmail(e.target.value)} />
