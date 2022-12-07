@@ -146,35 +146,29 @@ namespace Provoke.Repositories
             }
         }
 
-        //public void Edit(Draft draft)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"
-        //                    UPDATE Post
-        //                            SET
-        //                                  Title = @title,
-        //                                  Content = @content,
-        //                                  ImageLocation = @imageLocation,
-        //                                  CategoryId = @categoryId,
-        //                                  IsApproved = @isApproved
-        //                            WHERE Id = @id";
+        public void Edit(Draft draft)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE Post
+                                    SET
+                                          title = @title,
+                                          content = @content
+                                    WHERE id = @id";
 
-        //            cmd.Parameters.AddWithValue("@title", post.Title);
-        //            cmd.Parameters.AddWithValue("@content", post.Content);
-        //            cmd.Parameters.AddWithValue("@imageLocation", DbUtils.ValueOrDBNull(post.ImageLocation));
-        //            cmd.Parameters.AddWithValue("@categoryId", post.CategoryId);
-        //            cmd.Parameters.AddWithValue("@isApproved", post.IsApproved);
-        //            cmd.Parameters.AddWithValue("@id", post.Id);
+                    cmd.Parameters.AddWithValue("@title", draft.title);
+                    cmd.Parameters.AddWithValue("@content", draft.content);
+                    cmd.Parameters.AddWithValue("@id", draft.id);
 
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
-        
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         //Keeping just in case, probably not going to utilize this
         //private Draft NewDraftFromReader(SqlDataReader reader)
         //{
