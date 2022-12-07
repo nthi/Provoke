@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Provoke.Models;
 using Provoke.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -37,11 +39,15 @@ namespace Provoke.Controllers
             return Ok(_draftRepository.GetAllUnpublishedDraftsByUserId(id));
         }
 
+        //drafts are posting if i run sql query, but swagger gives me message "No route matches the supplied values" on created at action result.
+        //in a previous similar issue, I simply hadn't set up what correlates to the "Get" in this example, BUT I'm not sure what I want to have there. I have two types of get already. I think I need to know what the reason for a CreatedAtAction is-- is it to get everything current after a POST?
         // POST api/<DraftController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        [HttpPost]
+        public IActionResult AddNewDraft(Draft draft)
+        {
+            _draftRepository.AddNewDraft(draft);
+            return CreatedAtAction("Get", new { id = draft.id }, draft);
+        }
 
         // PUT api/<DraftController>/5
         //[HttpPut("{id}")]
