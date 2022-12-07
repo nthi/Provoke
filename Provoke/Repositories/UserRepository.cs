@@ -111,5 +111,33 @@ namespace Provoke.Repositories
                 }
             }
         }
+
+        public void UpdateUser(int id, User user)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE [User]
+                                    SET
+                                          firstName = @firstName,
+											lastName = @lastName,
+											userName = @userName,
+                                            normalMode = @normalMode
+                                    WHERE id = @id";
+
+                    cmd.Parameters.AddWithValue("@firstName", user.firstName);
+                    cmd.Parameters.AddWithValue("@lastName", user.lastName);
+                    cmd.Parameters.AddWithValue("@userName", user.userName);
+                    cmd.Parameters.AddWithValue("@normalMode", user.normalMode);
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
