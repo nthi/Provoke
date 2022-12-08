@@ -9,11 +9,6 @@ import Hello from '../drafts/hello';
 export default function ApplicationViews() {
     return (
        <Routes>
-        {localStorage.getItem("userProfile") ?
-        <Route path="/" element={<Hello />} />
-        :
-        <Route path="/" element={<Navigate to="/login" />} />
-      }
       <Route path="*" element={<Navigate to="/" />} />
       <Route path="/" element={<Hello  />} />
        </Routes>

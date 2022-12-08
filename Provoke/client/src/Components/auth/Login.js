@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { button, form, fieldset, label, input } from 'reactstrap';
-import { useNavigate, link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../Managers/UserManager";
 
 export default function Login({ setIsLoggedIn }) {
@@ -29,18 +29,18 @@ export default function Login({ setIsLoggedIn }) {
       <form onSubmit={loginSubmit}>
         <fieldset>
           <fieldset>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input id="email" type="text" onChange={e => setEmail(e.target.value)} />
           </fieldset>
           <fieldset>
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input id="password" type="password" onChange={e => setPassword(e.target.value)} />
           </fieldset>
           <fieldset>
             <button>Login</button>
           </fieldset>
           <em>
-            Not registered? <link to="/register">Register</link>
+            Not registered? <Link to="/register">Register</Link>
           </em>
         </fieldset>
       </form>
