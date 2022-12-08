@@ -12,3 +12,7 @@ export const getAllUnPublishedDraftsByUser = () => {
     .then((res) => res.json())
 };
 
+export const postDraft = (draft) => {
+    return fetch(`${apiUrl}/api/Draft`, postOption(draft))
+      .then((res) => res.json())
+  };
