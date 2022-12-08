@@ -10,7 +10,8 @@ export default function NormalView() {
 
     useEffect(() => {
         getAllPublishedDraftsByUser()
-    })
+        .then (drafts =>  updatePublishedDrafts(drafts))
+    }, [])
 
     //TODO: setup a handleSave
     // const handleSave = (e) => {
