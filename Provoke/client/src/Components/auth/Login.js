@@ -18,7 +18,7 @@ export default function Login({ setIsLoggedIn }) {
           setIsLoggedIn(true)
           navigate('/')
         }
-        else { //invalid email or password will hit here
+        else {
           alert("Invalid email or password")
         }
       })

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
 import { useNavigate } from "react-router-dom";
 import { register } from "../../Managers/UserManager";
 
@@ -18,8 +20,8 @@ export default function Register ({ setIsLoggedIn })
     if (password && password !== confirmPassword) {
       alert("Passwords don't match. Do better.");
     } else {
-      const userProfile = { firstName, lastName, userName, email };
-      register(userProfile, password)
+      const user = { firstName, lastName, userName, email };
+      register(user, password)
         .then(() => {
           setIsLoggedIn(true)
           navigate('/')
@@ -28,36 +30,38 @@ export default function Register ({ setIsLoggedIn })
   };
 
   return (
-    <div>
-      <form onSubmit={registerClick}>
-          <fieldset>
-            <label htmlFor="firstName">First Name</label>
-            <input id="firstName" type="text" onChange={e => setFirstName(e.target.value)} />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="lastName">Last Name</label>
-            <input id="lastName" type="text" onChange={e => setLastName(e.target.value)} />
-          </fieldset>
-          {/* <fieldset>
-            <label htmlFor="userName">Nom de Guerre</label>
-            <input id="userName" type="text" onChange={e => setuserName(e.target.value)} />
-          </fieldset> */}
-          <fieldset>
-            <label for="email">Email</label>
-            <input id="email" type="text" onChange={e => setEmail(e.target.value)} />
-          </fieldset>
-          <fieldset>
-            <label for="password">Password</label>
-            <input id="password" type="password" onChange={e => setPassword(e.target.value)} />
-          </fieldset>
-          <fieldset>
-            <label for="confirmPassword">Confirm Password</label>
-            <input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
-          </fieldset>
-          <fieldset>
-            <button>Register</button>
-          </fieldset>
-      </form>
+    <div className="m-5">
+      <Form onSubmit={registerClick}>
+        <fieldset>
+          <FormGroup>
+            <Label htmlFor="firstName">First Name</Label>
+            <Input id="firstName" type="text" onChange={e => setFirstName(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="lastName">Last Name</Label>
+            <Input id="lastName" type="text" onChange={e => setLastName(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="displayName">Nom de Guerre</Label>
+            <Input id="displayName" type="text" onChange={e => setUserName(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="email">Email</Label>
+            <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="confirmPassword">Confirm Password</Label>
+            <Input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+          </FormGroup>
+          <FormGroup>
+            <Button>Register</Button>
+          </FormGroup>
+        </fieldset>
+      </Form>
     </div>
   );
 }

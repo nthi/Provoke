@@ -10,9 +10,8 @@ function App() {
 
 
   
-     //fixed bug...changed initial state to false
   useEffect(()=>{  
-    if(!localStorage.getItem("userProfile")){
+    if(!localStorage.getItem("user")){
       setIsLoggedIn(false)
       
     }
