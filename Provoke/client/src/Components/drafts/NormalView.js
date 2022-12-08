@@ -1,7 +1,8 @@
 //this module renders a textarea form for drafting and a published drafts sidebar
 
+import { placeholder } from "@babel/types"
 import { useEffect, useState } from "react"
-import { getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js"
+import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js"
 import { PublishedFeed } from "./PublishedFeed"
 
 export default function NormalView() {
@@ -11,7 +12,8 @@ export default function NormalView() {
     const [newDraft, updateNewDraft] = useState({
         title: "",
         content: "",
-        published: ""
+        published: "",
+        placeholderId: ""
     })
 
     useEffect(() => {
@@ -22,12 +24,16 @@ export default function NormalView() {
     
     const handleSave = (e) => {
         e.preventDefault();
-        newDraft = {
+        const singleDraft = {
             title: newDraft.title,
             content: newDraft.content,
-            published: true
+            published: true,
+            placeholderId: 1
         }
-        
+        addDraft(singleDraft)
+            .then(() => getAllPublishedDraftsByUser())
+            .then((draftArray) => { updatePublishedDrafts(draftArray)})
+
     }
     
     return (
