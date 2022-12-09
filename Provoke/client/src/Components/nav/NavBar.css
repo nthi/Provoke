@@ -1,0 +1,10 @@
+
+.normal-view-navbar {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #0D681A;
+    background-color: #CABAC8;
+    padding-left: 3rem;
+    font-family: 'Arsenal', sans-serif;
+}

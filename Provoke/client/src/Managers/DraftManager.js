@@ -12,3 +12,12 @@ export const getAllUnPublishedDraftsByUser = () => {
     .then((res) => res.json())
 };
 
+export const addDraft = (singleDraft) => {
+    return fetch(`${apiUrl}/api/Draft`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(singleDraft),
+    });
+  };
