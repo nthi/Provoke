@@ -5,14 +5,20 @@ import { useEffect, useState } from "react"
 import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js"
 import { PublishedFeed } from "./PublishedFeed"
 import "./NormalView.css"
+import { useParams } from "react-router-dom"
+import { getCurrentUser } from "../../Managers/UserManager.js"
 
 export default function NormalView() {
     //something to send draft to updated published drafts sidebar
     const [publishedDrafts, updatePublishedDrafts] = useState([])
 
+    const user = getCurrentUser();
+
     const [newDraft, updateNewDraft] = useState({
+        userId: "",
         title: "",
         content: "",
+        dateCreated: "",
         published: "",
         placeholderId: ""
     })
@@ -26,14 +32,17 @@ export default function NormalView() {
     const handleSave = (e) => {
         e.preventDefault();
         const singleDraft = {
+            userId: user.id,
             title: newDraft.title,
             content: newDraft.content,
+            dateCreated: new Date(),
             published: true,
             placeholderId: 1
         }
         addDraft(singleDraft)
             .then(() => getAllPublishedDraftsByUser())
             .then((draftArray) => { updatePublishedDrafts(draftArray)})
+            // then reset state for draft. this does not work: .then(updateNewDraft());
 
     }
     
