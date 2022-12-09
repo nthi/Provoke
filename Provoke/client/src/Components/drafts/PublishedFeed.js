@@ -13,7 +13,9 @@ export const PublishedFeed = ({ publishedDrafts }) => {
                 {
                 publishedDrafts.map(
                     (draft) =>
-                    <Draft key={`published--${draft.id}`}
+                    <Draft draftId={`published--${draft.id}`}
+                    quote={draft.placeholder.quote}
+                    author={draft.placeholder.author}
                     title={draft.title}
                     content={draft.content}
                     />

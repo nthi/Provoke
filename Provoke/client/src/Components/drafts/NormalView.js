@@ -52,6 +52,9 @@ export default function NormalView() {
             <div className="create-post-form">
             <div className="compose-header">
                 <h1>Compose</h1>
+                <div className="quote-card">
+                    {/* put a different quote each time here */}
+                </div>
             </div>
             <fieldset className="fieldset-post-form">
                 <div>

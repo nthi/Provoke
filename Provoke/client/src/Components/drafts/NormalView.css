@@ -34,7 +34,19 @@ h1, h3 {
 }
 
 p {
-    font-family: 'Catamaran', sans-serif;}
+    font-family: 'Catamaran', sans-serif;
+}
+
+.quote-card {
+    color:#0D681A;
+    font-size: .9rem;
+}
+
+.single-draft {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #a6d8ae;
+
+}
 
 .compose-header{
     margin-left: 1rem;
