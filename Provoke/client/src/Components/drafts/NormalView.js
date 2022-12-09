@@ -7,10 +7,20 @@ import { PublishedFeed } from "./PublishedFeed"
 import "./NormalView.css"
 import { useParams } from "react-router-dom"
 import { getCurrentUser } from "../../Managers/UserManager.js"
+import { QuoteQueue } from "./QuoteQueue.js"
+import { getAllPlaceholders } from "../../Managers/PlaceholderManager.js"
 
 export default function NormalView() {
     //something to send draft to updated published drafts sidebar
     const [publishedDrafts, updatePublishedDrafts] = useState([])
+    // const [queQuote, updateQueQuote] = useState([]);
+    const [placeholders, setPlaceholders] = useState([]);
+
+    useEffect(() => {
+        getAllPlaceholders()
+        .then((placeholders) => setPlaceholders(placeholders))
+    })
+
 
     const user = getCurrentUser();
 
@@ -37,7 +47,7 @@ export default function NormalView() {
             content: newDraft.content,
             dateCreated: new Date(),
             published: true,
-            placeholderId: 1
+            placeholderId: 2
         }
         addDraft(singleDraft)
             .then(() => getAllPublishedDraftsByUser())
@@ -53,7 +63,8 @@ export default function NormalView() {
             <div className="compose-header">
                 <h1>Compose</h1>
                 <div className="quote-card">
-                    {/* put a different quote each time here */}
+                {/* <div><i>{queQuote.quote}</i> <b>-- {queQuote.author}</b></div> */}
+
                 </div>
             </div>
             <fieldset className="fieldset-post-form">
