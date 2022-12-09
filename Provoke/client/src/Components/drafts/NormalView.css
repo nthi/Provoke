@@ -44,6 +44,7 @@ textarea {
     border-radius: 4px;
     background-color: #f8f8f8;
     resize: none;
+    margin-bottom: 1rem;
   }
 
 .custom-green-button {
@@ -54,6 +55,19 @@ textarea {
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px; 
+}
+
+.fieldset-post-form {
+    border: none;
+}
+
+.title-input {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    padding: 5px;
+    margin-bottom: 1rem;
+    width: 60%;
 }
 
 .create-post-form {

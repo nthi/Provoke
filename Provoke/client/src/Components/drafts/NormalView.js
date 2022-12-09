@@ -41,9 +41,9 @@ export default function NormalView() {
         <>
         <div className="normal-body">
             <div className="create-post-form">
-            <fieldset>
+            <fieldset className="fieldset-post-form">
                 <div>
-                    <input type="text" value={newDraft.title} 
+                    <input className="title-input" type="text" value={newDraft.title} 
                     onChange={
                         (evt) => {
                             const copy = { ...newDraft }
