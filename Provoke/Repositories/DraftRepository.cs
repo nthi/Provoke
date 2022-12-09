@@ -26,7 +26,7 @@ namespace Provoke.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                       SELECT d.id AS draftId, d.userId, d.title, d.content, d.dateCreated, d.published, d.placeholderId, p.quote, p.author
+                       SELECT d.id AS draftId, d.userId, d.title, d.content, d.dateCreated, d.published, d.placeholderId, p.id AS phId, p.quote, p.author
                          FROM Draft d
 							LEFT JOIN Placeholder p ON d.placeholderId = p.id
                         WHERE published = 1 AND d.userId = @userId
@@ -46,6 +46,7 @@ namespace Provoke.Repositories
                         {
                             existingDraft = new Draft()
                             {
+                                id = reader.GetInt32(reader.GetOrdinal("draftId")),
                                 userId = reader.GetInt32(reader.GetOrdinal("userId")),
                                 title = reader.GetString(reader.GetOrdinal("title")),
                                 content = reader.GetString(reader.GetOrdinal("content")),
@@ -57,6 +58,7 @@ namespace Provoke.Repositories
                             drafts.Add(existingDraft);
                             if (existingDraft.placeholderId != 8)
                             {
+                                existingDraft.placeholder.id = reader.GetInt32(reader.GetOrdinal("phId"));
                                 existingDraft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
                                 existingDraft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
                             }
@@ -79,7 +81,7 @@ namespace Provoke.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                       SELECT d.id AS draftId, d.userId, d.title, d.content, d.dateCreated, d.published, d.placeholderId, p.quote, p.author
+                       SELECT d.id AS draftId, d.userId, d.title, d.content, d.dateCreated, d.published, d.placeholderId, p.id AS phId, p.quote, p.author
                          FROM Draft d
 							LEFT JOIN Placeholder p ON d.placeholderId = p.id
                         WHERE published = 0 AND d.userId = @userId
@@ -99,6 +101,7 @@ namespace Provoke.Repositories
                         {
                             existingDraft = new Draft()
                             {
+                                id = reader.GetInt32(reader.GetOrdinal("draftId")),
                                 userId = reader.GetInt32(reader.GetOrdinal("userId")),
                                 title = reader.GetString(reader.GetOrdinal("title")),
                                 content = reader.GetString(reader.GetOrdinal("content")),
@@ -110,6 +113,7 @@ namespace Provoke.Repositories
                             drafts.Add(existingDraft);
                             if (existingDraft.placeholderId != 8)
                             {
+                                existingDraft.placeholder.id = reader.GetInt32(reader.GetOrdinal("phId"));
                                 existingDraft.placeholder.quote = reader.GetString(reader.GetOrdinal("quote"));
                                 existingDraft.placeholder.author = reader.GetString(reader.GetOrdinal("author"));
                             }
