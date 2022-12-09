@@ -20,18 +20,21 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #0D681A; 
+  background: #a6d8ae; 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #0a5515; 
+  background: #67936d; 
 }
 
 h1, h3 {
     color: #0D681A;
 }
+
+p {
+    font-family: 'Catamaran', sans-serif;}
 
 .compose-header{
     margin-left: 1rem;
