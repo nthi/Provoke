@@ -5,7 +5,7 @@ import Authorize from '../views/Authorized';
 import Register from '../auth/Register';
 import Login from '../auth/Login';
 import Hello from '../drafts/hello';
-import NormalView from "../drafts/NormalView";
+import { NormalView } from "../drafts/NormalView";
 
 export default function ApplicationViews() {
     return (

@@ -1,6 +1,5 @@
 //this module renders a textarea form for drafting and a published drafts sidebar
-
-import { placeholder } from "@babel/types"
+import React from "react"
 import { useEffect, useState } from "react"
 import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js"
 import { PublishedFeed } from "./PublishedFeed"
@@ -10,16 +9,30 @@ import { getCurrentUser } from "../../Managers/UserManager.js"
 import { QuoteQueue } from "./QuoteQueue.js"
 import { getAllPlaceholders } from "../../Managers/PlaceholderManager.js"
 
-export default function NormalView() {
+export const NormalView = () => {
     //something to send draft to updated published drafts sidebar
     const [publishedDrafts, updatePublishedDrafts] = useState([])
     // const [queQuote, updateQueQuote] = useState([]);
-    const [placeholders, setPlaceholders] = useState([]);
+    const [oneQuote, setOneQuote] = useState([]);
+    // const[filteredPlaceholders, setFilteredPlaceholders] = useState([])
 
     useEffect(() => {
         getAllPlaceholders()
-        .then((placeholders) => setPlaceholders(placeholders))
-    })
+        .then((placeTACO) => {
+            let quotelist = placeTACO.filter(placeholder => placeholder.id !== 8);
+            let randomQuote = quotelist[Math.floor(Math.random() * quotelist.length)];
+            setOneQuote(randomQuote)
+        })
+    }, []);
+
+    // console.log(placeholders);
+
+    // console.log(placeholders);
+    //if the user needs to see it, go in state. if we don't need to see it, don't put in state.
+    //use effect needs to just set one quote, so not placeholderS, just placeholder.
+    // let quotelist = placeholders.filter(placeholder => placeholder.id !== 8);
+    // let randomQuote = quotelist[Math.floor(Math.random() * quotelist.length)];
+    // console.log(placeholders);
 
 
     const user = getCurrentUser();
@@ -47,14 +60,22 @@ export default function NormalView() {
             content: newDraft.content,
             dateCreated: new Date(),
             published: true,
-            placeholderId: 2
+            placeholderId: oneQuote.id
         }
         addDraft(singleDraft)
             .then(() => getAllPublishedDraftsByUser())
             .then((draftArray) => { updatePublishedDrafts(draftArray)})
-            // then reset state for draft. this does not work: .then(updateNewDraft());
-
+            .then(() => updateNewDraft({        
+            userId: "",
+            title: "",
+            content: "",
+            dateCreated: "",
+            published: "",
+            placeholderId: ""}));
     }
+
+    //onclick handler for checkbox 
+    //event.target.checked = placeholderId = 8 (update oneQuote's state), else placeholderId = oneQuote.id
     
     return (
         <>
@@ -63,8 +84,7 @@ export default function NormalView() {
             <div className="compose-header">
                 <h1>Compose</h1>
                 <div className="quote-card">
-                {/* <div><i>{queQuote.quote}</i> <b>-- {queQuote.author}</b></div> */}
-
+                <div><i>{oneQuote.quote}</i> <b>-- {oneQuote.author}</b></div>
                 </div>
             </div>
             <fieldset className="fieldset-post-form">
@@ -88,6 +108,13 @@ export default function NormalView() {
                         }
                     } />
                 </div>
+
+                <div>
+                <input type="checkbox" value="8" />
+                <label>Remove quotation</label>
+                
+                </div>
+
                 <button className="custom-green-button" type="submit" onClick={handleSave}>Publish</button>
             </fieldset>
             </div>
@@ -97,5 +124,4 @@ export default function NormalView() {
         </div>
         </>
     )
-
 }
