@@ -4,6 +4,7 @@ import { placeholder } from "@babel/types"
 import { useEffect, useState } from "react"
 import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js"
 import { PublishedFeed } from "./PublishedFeed"
+import "./NormalView.css"
 
 export default function NormalView() {
     //something to send draft to updated published drafts sidebar
@@ -38,6 +39,8 @@ export default function NormalView() {
     
     return (
         <>
+        <div className="normal-body">
+            <div className="create-post-form">
             <fieldset>
                 <div>
                     <input type="text" value={newDraft.title} 
@@ -59,11 +62,13 @@ export default function NormalView() {
                         }
                     } />
                 </div>
-                <button type="submit" onClick={handleSave}>Publish</button>
+                <button className="custom-green-button" type="submit" onClick={handleSave}>Publish</button>
             </fieldset>
+            </div>
             <div>
                 <PublishedFeed publishedDrafts={publishedDrafts}/>
             </div>
+        </div>
         </>
     )
 

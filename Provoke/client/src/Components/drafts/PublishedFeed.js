@@ -7,8 +7,9 @@ export const PublishedFeed = ({ publishedDrafts }) => {
 
     return (
         <>
-            <h1>hello this is a published draft feed</h1>
-            <div>
+            <div className="published-feed-column">
+            <h1>Browse</h1>
+            <div className="published-drafts-list">
                 {
                 publishedDrafts.map(
                     (draft) =>
@@ -18,6 +19,7 @@ export const PublishedFeed = ({ publishedDrafts }) => {
                     />
                 )
                 }
+            </div>
             </div>
         </>
     )
