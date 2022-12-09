@@ -41,6 +41,9 @@ export default function NormalView() {
         <>
         <div className="normal-body">
             <div className="create-post-form">
+            <div className="compose-header">
+                <h1>Compose</h1>
+            </div>
             <fieldset className="fieldset-post-form">
                 <div>
                     <input className="title-input" type="text" value={newDraft.title} 

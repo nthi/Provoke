@@ -1,4 +1,11 @@
-.normal-view {
+@import url('https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&family=Nunito:wght@600&family=Signika+Negative:wght@500&display=swap');
+
+.normal-view-navbar {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
     color: #0D681A;
     background-color: #CABAC8;
+    padding-left: 3rem;
+    font-family: 'Signika Negative', sans-serif;
 }
