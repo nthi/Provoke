@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom"
 import { getCurrentUser } from "../../Managers/UserManager.js"
 import { QuoteQueue } from "./QuoteQueue.js"
 import { getAllPlaceholders } from "../../Managers/PlaceholderManager.js"
+import { Checkbox } from "./Checkbox.js"
 
 export const NormalView = () => {
     //something to send draft to updated published drafts sidebar
@@ -77,6 +78,9 @@ export const NormalView = () => {
     //onclick handler for checkbox 
     //event.target.checked = placeholderId = 8 (update oneQuote's state), else placeholderId = oneQuote.id
     
+
+
+
     return (
         <>
         <div className="normal-body">
@@ -110,9 +114,7 @@ export const NormalView = () => {
                 </div>
 
                 <div>
-                <input type="checkbox" value="8" />
-                <label>Remove quotation</label>
-                
+                    <Checkbox label="Remove quotation" />
                 </div>
 
                 <button className="custom-green-button" type="submit" onClick={handleSave}>Publish</button>
