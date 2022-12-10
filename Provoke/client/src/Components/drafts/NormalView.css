@@ -54,6 +54,10 @@ p {
     justify-content: space-between;
 }
 
+.checked-text {
+    font-size: .8rem;
+}
+
 .compose-header{
     margin-left: 1rem;
 }
