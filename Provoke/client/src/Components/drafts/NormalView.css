@@ -48,6 +48,12 @@ p {
 
 }
 
+.checkbox-button-span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .compose-header{
     margin-left: 1rem;
 }
