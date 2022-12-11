@@ -1,0 +1,14 @@
+
+.tutorial-view-navbar {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #FF101F;
+    background-color: #CABAC8;
+    padding-left: 3rem;
+}
+
+.tutorial-nav-logo {
+    color:#FF101F;
+    font-family: 'Luckiest Guy', cursive;
+}

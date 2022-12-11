@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
 import { getCurrentUser, logout } from '../../Managers/UserManager';
-import "./NavBar.css"
+import "./TutorialNavBar.css"
 // import {
 //     Collapse,
 //     Navbar,
@@ -12,7 +12,7 @@ import "./NavBar.css"
 //     NavLink
 //   } from 'reactstrap';
 
-export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
+export default function TutorialNavBar({ isLoggedIn, setIsLoggedIn}) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     const [localUser, setLocalUser] = useState("");
@@ -23,8 +23,8 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
     }, [isLoggedIn]);
   
     return (
-        <div className="normal-view-navbar">
-            <h1 className="nav-logo">Provoke</h1>
+        <div className="tutorial-view-navbar">
+            <h1 className="tutorial-nav-logo">Prevoke</h1>
         </div>
     );
   }
