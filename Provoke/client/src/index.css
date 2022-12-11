@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Arsenal:wght@400;700&family=Catamaran:wght@200&family=Comic+Neue:wght@300&family=Dokdo&family=Signika+Negative:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Arsenal:wght@400;700&family=Catamaran:wght@200&family=Comic+Neue:wght@300&family=Dokdo&family=Luckiest+Guy&family=Press+Start+2P&family=Rubik+Vinyl&family=Signika+Negative:wght@500&display=swap');
 /* 
 use these in individual elements as needed
 font-family: 'Architects Daughter', cursive;
 font-family: 'Arsenal', sans-serif;
-font-family: 'Comic Neue', cursive;
 font-family: 'Catamaran', sans-serif;
+font-family: 'Comic Neue', cursive;
 font-family: 'Dokdo', cursive;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Rubik Vinyl', cursive;
 font-family: 'Signika Negative', sans-serif; */
 
 body {
@@ -22,3 +24,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* :root {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: royalblue;
+  --accent: purple;
+}
+[data-theme='dark'] {
+  --background: black;
+  --text-primary: black;
+  --text-secondary: black;
+  --accent: black;
+} */

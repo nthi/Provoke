@@ -1,0 +1,134 @@
+/* use these in individual elements as needed
+font-family: 'Architects Daughter', cursive;
+font-family: 'Arsenal', sans-serif;
+font-family: 'Catamaran', sans-serif;
+font-family: 'Comic Neue', cursive;
+font-family: 'Dokdo', cursive;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Rubik Vinyl', cursive;
+font-family: 'Signika Negative', sans-serif; */
+
+.normal-body {
+    background-color: #D972FF;
+    font-family: 'Signika Negative', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #61FF7E; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #E0FF4F; 
+}
+
+h1, h3 {
+    font-family: 'Luckiest Guy', cursive;
+    color: #FF101F;
+} 
+
+p {
+    font-family: 'Comic Neue', cursive;
+}
+
+.quote-card {
+    font-family: 'Architects Daughter', cursive;
+    color:#D81E5B;
+    font-size: .9rem;
+}
+
+.single-draft {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #a6d8ae;
+
+}
+
+.checkbox-button-span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checked-text {
+    font-size: .8rem;
+}
+
+.compose-header{
+    margin-left: 1rem;
+}
+
+textarea {
+    width: 100%;
+    height: 500px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    margin-bottom: 1rem;
+  }
+
+.custom-green-button {
+    color: #131515;
+    background-color: #61FF7E;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px; 
+}
+
+.fieldset-post-form {
+    border: none;
+}
+
+.title-input {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    padding: 5px;
+    margin-bottom: 1rem;
+    width: 60%;
+}
+
+.create-post-form {
+    background-color: #EBE1E3;
+    width: 80%;
+    padding: 1rem;
+}
+.create-post-column{
+    width: 60%;
+    padding: 1rem;
+}
+
+.published-drafts-list {
+    background-color: #EBE1E3;
+    height: 500px;
+    width: 400px;
+    overflow: scroll;
+    padding: 2rem;
+}
+
+.published-feed-column {
+    width: 40%;
+    padding: 1rem;
+}
