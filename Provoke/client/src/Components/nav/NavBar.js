@@ -23,8 +23,8 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
     }, [isLoggedIn]);
   
     return (
-        <div className="normal-view-navbar">
-            <h1>Provoke</h1>
+        <div className="tutorial-view-navbar">
+            <h1 className="nav-logo">Prevoke</h1>
         </div>
     );
   }

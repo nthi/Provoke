@@ -1,5 +1,5 @@
 
-.normal-view-navbar {
+/* .normal-view-navbar {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
@@ -7,4 +7,29 @@
     background-color: #CABAC8;
     padding-left: 3rem;
     font-family: 'Arsenal', sans-serif;
+} */
+
+/* font-family: 'Architects Daughter', cursive;
+font-family: 'Arsenal', sans-serif;
+font-family: 'Catamaran', sans-serif;
+font-family: 'Comic Neue', cursive;
+font-family: 'Dokdo', cursive;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Rubik Vinyl', cursive;
+font-family: 'Signika Negative', sans-serif; */
+
+.tutorial-view-navbar {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #FF101F;
+    background-color: #CABAC8;
+    padding-left: 3rem;
+    font-family: 'Luckiest Guy', cursive;
+
+}
+
+.nav-logo {
+    color:#FF101F
 }
