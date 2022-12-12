@@ -10,6 +10,7 @@ using Provoke.Utils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Azure.Identity;
 using System.Threading.Tasks.Dataflow;
+using Azure;
 
 namespace Provoke.Repositories
 {
@@ -150,6 +151,40 @@ namespace Provoke.Repositories
             }
         }
 
+        public Draft GetDraftById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT id, userId, title, content, dateCreated, published, placeholderId FROM Draft WHERE Id = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Draft draft = new Draft
+                        {
+                            id = reader.GetInt32(reader.GetOrdinal("id")),
+                            userId = reader.GetInt32(reader.GetOrdinal("userId")),
+                            title = reader.GetString(reader.GetOrdinal("title")),
+                            content = reader.GetString(reader.GetOrdinal("content")),
+                            dateCreated = reader.GetDateTime(reader.GetOrdinal("dateCreated")),
+                            published = reader.GetBoolean(reader.GetOrdinal("published")),
+                            placeholderId = reader.GetInt32(reader.GetOrdinal("placeholderId"))
+                        };
+                        reader.Close();
+                        return draft;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
+                }
+            }
+        }
         public void Edit(Draft draft)
         {
             using (var conn = Connection)
