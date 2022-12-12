@@ -132,3 +132,21 @@ textarea {
     width: 40%;
     padding: 1rem;
 }
+
+.emend-button {
+    color:#6558F5;
+    border: 1px solid #6558F5;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px;
+}
+
+.excise-button {
+    color:#FF101F;
+    border: 1px solid #FF101F;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px;
+}
