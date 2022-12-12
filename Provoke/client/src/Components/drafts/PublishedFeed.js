@@ -1,19 +1,11 @@
 //this module creates the published drafts feed for the sidebar of NormalView.js
-import { useEffect, useState } from "react"
-import { useParams } from "react-router";
+
+import { useNavigate } from "react-router"
 import { Button } from "./Button"
 import { Draft } from "./draft"
 
 export const PublishedFeed = ({ publishedDrafts }) => {
-    const [thisDraft, setThisDraft] = useState({});
-    const {id} = useParams();
-
-    useEffect(
-        () => {
-            
-        },
-        []
-    )
+    const navigate = useNavigate();
 
     return (
         <>
@@ -32,7 +24,8 @@ export const PublishedFeed = ({ publishedDrafts }) => {
                     />
 
                     <div className="button-div">
-                        <button className="edit-button">
+                        <button className="edit-button" 
+                        onClick={() => navigate(`/editdraft/${draft.id}`)}>
                             Edit
                         </button>
                         <button className="delete-button">
