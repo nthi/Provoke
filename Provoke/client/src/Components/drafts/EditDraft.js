@@ -18,43 +18,61 @@ export const EditDraft = () => {
         },
         []
     )
-    
+    //add alll the stuff to this draft/ user date etc.
     const saveDraftEdit = (e) => {
         e.preventDefault();
         const updatedDraft = {
             id: draft.id,
+            userId: draft.userId,
             title: draft.title,
-            content: draft.content
+            content: draft.content,
+            dateCreated: draft.dateCreated,
+            published: draft.published,
+            placeholderId: draft.placeholderId
         }
-        editDraft(updatedDraft)
-            .then(() => {
-                navigate("/");
-            })
+        editDraft(updatedDraft);
+            navigate("/");
     }
 
     return (
-        <form className="m-5" onSubmit={saveDraftEdit}>
+        <>
+        <div className="normal-body">
+            <div className="create-post-form">
+            <div className="compose-header">
+                <h1>Edit {draft.title}?</h1>
+            </div>
+            <fieldset className="fieldset-post-form">
+                <div>
+                    <input className="title-input" type="text" value={draft.title} 
+                    onChange={
+                        (evt) => {
+                            const copy = { ...draft }
+                            copy.title = evt.target.value
+                            setDraft(copy)
+                        }
+                    } />
+                </div>
+                <div>
+                    <textarea name="draft" required autoFocus type="text"
+                    className="form-control" value={draft.content} onChange={
+                        (evt) => {
+                            const copy = { ... draft }
+                            copy.content = evt.target.value
+                            setDraft(copy)
+                        }
+                    } />
+                </div>
 
-            <label htmlFor="draft">Edit <b>"{draft.title}?"</b></label>
-            <input type="text" value={draft.title} onChange={(e) => {
-                const copy = { ...draft }
-                copy.name = e.target.value
-                setDraft(copy)
-            }} className="form-control" id="draft" />
+                <div className="checkbox-button-span">
+                    <button className="custom-green-button" type="submit" onClick={saveDraftEdit}>Save Changes</button>
+                    <a href="/">No, take me back </a>
 
-            <fieldset>
-                <label for="content">Content</label>
-                    <input type="textarea" name="content" required value={draft.content}
-                        onChange={(e) => {
-                            const copy = { ...draft };
-                            copy.content = e.target.value;
-                            setDraft(copy);
-                        }} />
+                
+                </div>
             </fieldset>
-        <button>Save</button>
-        <a href="/">No, take me back </a>
-
-    </form>
+            </div>
+        </div>
+        </>
     );
 
 }

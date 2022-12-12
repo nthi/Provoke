@@ -25,17 +25,16 @@ export const addDraft = (singleDraft) => {
   };
 
   export const editDraft = (draft) => {
-    return fetch(`${apiUrl}/Draft/${draft.id}`, {
+    return fetch(`${apiUrl}/api/Draft/${draft.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(draft)
     })
-    .then(getAllPublishedDraftsByUser)
-  }
+  };
 
   export const getDraftById = (id) => {
     return fetch(`${apiUrl}/api/Draft/getbyid/${id}`)
     .then((res) => res.json())
-  }
+  };

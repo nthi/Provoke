@@ -193,7 +193,7 @@ namespace Provoke.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            UPDATE Post
+                            UPDATE Draft
                                     SET
                                           title = @title,
                                           content = @content
