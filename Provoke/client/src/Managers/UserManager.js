@@ -25,7 +25,7 @@ export const getCurrentUser = () => {
   };
 
 
-  export const register = (userObject, password) => {
+export const register = (userObject, password) => {
     return  fetch(`${apiUrl}/api/User`, {
       method: "POST",
       headers: {
@@ -38,3 +38,13 @@ export const getCurrentUser = () => {
         localStorage.setItem("user", JSON.stringify(savedUser))
       });
   };
+
+export const updateUserMode = (user) => {
+  return fetch(`${apiUrl}/api/User/${user.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user)
+  })
+};
