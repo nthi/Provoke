@@ -39,6 +39,12 @@ namespace Provoke.Controllers
             return Ok(_draftRepository.GetAllUnpublishedDraftsByUserId(id));
         }
 
+        [HttpGet("getbyid/{id}")]
+        public IActionResult GetDraftById(int id)
+        {
+            return Ok(_draftRepository.GetDraftById(id));
+        }
+
         //if I'm just going to a list page with no details then return NoContent() instead of OK(...) or CreatedAtAction(...) is fine
         //don't forget to refresh list on client side
         // POST api/<DraftController>

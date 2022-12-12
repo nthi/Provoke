@@ -1,7 +1,7 @@
 import React from "react"
 import { useEffect, useState } from "react"
 import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js"
-import { PublishedFeed } from "./PublishedFeed"
+import { TutorialPublishedFeed } from "./TutorialPublishedFeed"
 import "./TutorialView.css"
 import { useParams } from "react-router-dom"
 import { getCurrentUser } from "../../Managers/UserManager.js"
@@ -114,7 +114,7 @@ export const TutorialView = () => {
             </fieldset>
             </div>
             <div>
-                <PublishedFeed publishedDrafts={publishedDrafts}/>
+                <TutorialPublishedFeed publishedDrafts={publishedDrafts}/>
             </div>
         </div>
         </>

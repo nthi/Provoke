@@ -29,7 +29,7 @@
   background: #67936d; 
 }
 
-h1, h3 {
+h1, h2, h3 {
     color: #0D681A;
 }
 
@@ -43,9 +43,9 @@ p {
 }
 
 .single-draft {
-    margin-bottom: 3rem;
-    border-bottom: 1px solid #a6d8ae;
-
+    margin-top: 3rem;
+    border-top: 1px solid #a6d8ae;
+    margin-bottom: 1rem;
 }
 
 .checkbox-button-span {
@@ -115,4 +115,48 @@ textarea {
 .published-feed-column {
     width: 40%;
     padding: 1rem;
+}
+
+.button-div {
+    display: flex;
+    margin-left: 10rem;
+    justify-content: space-around;
+}
+
+.edit-button {
+    color: #6558F5;
+    /* background-color: #6558F5; */
+    border: 1px solid #6558F5;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px;
+}
+
+.delete-sure {
+    
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+
+.delete-button {
+    color:#FF101F;
+    /* background-color: #FF101F; */
+    border: 1px solid #FF101F;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px;
+}
+
+.delete-takeback-span {
+    display: flex;
+    width: 50%;
+    justify-content:space-between;
+    margin-left: 3rem;
+}
+
+.take-back {
+    color:#6558F5;
+    font-size: larger;
 }

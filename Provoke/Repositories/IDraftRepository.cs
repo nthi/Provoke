@@ -10,5 +10,6 @@ namespace Provoke.Repositories
         public void AddNewDraft(Draft draft);
         public void Delete(int id);
         public void Edit(Draft draft);
+        public Draft GetDraftById(int id);
     }
 }

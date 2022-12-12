@@ -1,3 +1,5 @@
+import { assertTSConstructSignatureDeclaration } from "@babel/types";
+
 const apiUrl = "https://localhost:5001";
 
 export const getCurrentUserId = () => JSON.parse(localStorage.getItem('user')).id;
@@ -21,3 +23,24 @@ export const addDraft = (singleDraft) => {
       body: JSON.stringify(singleDraft),
     });
   };
+
+  export const editDraft = (draft) => {
+    return fetch(`${apiUrl}/api/Draft/${draft.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(draft)
+    })
+  };
+
+  export const getDraftById = (id) => {
+    return fetch(`${apiUrl}/api/Draft/getbyid/${id}`)
+    .then((res) => res.json())
+  };
+
+  export const deleteDraft = (draftId) => {
+    return fetch(`${apiUrl}/api/Draft/${draftId}`, {
+      method: "DELETE"
+    })
+  }
