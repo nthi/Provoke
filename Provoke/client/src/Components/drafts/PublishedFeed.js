@@ -28,7 +28,8 @@ export const PublishedFeed = ({ publishedDrafts }) => {
                         onClick={() => navigate(`/editdraft/${draft.id}`)}>
                             Edit
                         </button>
-                        <button className="delete-button">
+                        <button className="delete-button"
+                        onClick={() => navigate(`/deletedraft/${draft.id}`)}>
                             Delete
                         </button>
                     </div>

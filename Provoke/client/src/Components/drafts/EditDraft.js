@@ -39,7 +39,7 @@ export const EditDraft = () => {
         <div className="normal-body">
             <div className="create-post-form">
             <div className="compose-header">
-                <h1>Edit {draft.title}?</h1>
+                <h1>Edit Draft?</h1>
             </div>
             <fieldset className="fieldset-post-form">
                 <div>

@@ -38,3 +38,9 @@ export const addDraft = (singleDraft) => {
     return fetch(`${apiUrl}/api/Draft/getbyid/${id}`)
     .then((res) => res.json())
   };
+
+  export const deleteDraft = (draftId) => {
+    return fetch(`${apiUrl}/api/Draft/${draftId}`, {
+      method: "DELETE"
+    })
+  }

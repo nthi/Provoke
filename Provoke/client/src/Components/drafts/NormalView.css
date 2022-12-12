@@ -29,7 +29,7 @@
   background: #67936d; 
 }
 
-h1, h3 {
+h1, h2, h3 {
     color: #0D681A;
 }
 
@@ -133,6 +133,12 @@ textarea {
     border-radius: 4px;
 }
 
+.delete-sure {
+    
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+
 .delete-button {
     color:#FF101F;
     /* background-color: #FF101F; */
@@ -141,4 +147,16 @@ textarea {
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
+}
+
+.delete-takeback-span {
+    display: flex;
+    width: 50%;
+    justify-content:space-between;
+    margin-left: 3rem;
+}
+
+.take-back {
+    color:#6558F5;
+    font-size: larger;
 }
