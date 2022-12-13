@@ -29,11 +29,11 @@
   background: #67936d; 
 }
 
-h1, h2, h3 {
+.headline-styling {
     color: #0D681A;
 }
 
-p {
+.paragraph-styling {
     font-family: 'Catamaran', sans-serif;
 }
 

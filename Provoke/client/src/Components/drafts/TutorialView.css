@@ -9,7 +9,7 @@ font-family: 'Press Start 2P', cursive;
 font-family: 'Rubik Vinyl', cursive;
 font-family: 'Signika Negative', sans-serif; */
 
-.normal-body {
+.tutorial-normal-body {
     background-color: #D972FF;
     font-family: 'Signika Negative', sans-serif;
     display: flex;
@@ -40,38 +40,43 @@ font-family: 'Signika Negative', sans-serif; */
   background: #E0FF4F; 
 }
 
-h1, h3 {
+/* h1, h3 {
     font-family: 'Luckiest Guy', cursive;
     color: #FF101F;
-} 
+}  */
+
+.tutorial-headline-styling {
+    font-family: 'Luckiest Guy', cursive;
+    color: #FF101F;
+}
 
 p {
     font-family: 'Comic Neue', cursive;
 }
 
-.quote-card {
+.tutorial-quote-card {
     font-family: 'Architects Daughter', cursive;
     color:#D81E5B;
     font-size: .9rem;
 }
 
-.single-draft {
+.tutorial-single-draft {
     margin-bottom: 3rem;
     border-bottom: 1px solid #a6d8ae;
 
 }
 
-.checkbox-button-span {
+.tutorial-checkbox-button-span {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.checked-text {
+.tutorial-checked-text {
     font-size: .8rem;
 }
 
-.compose-header{
+.tutorial-compose-header{
     margin-left: 1rem;
 }
 
@@ -87,7 +92,7 @@ textarea {
     margin-bottom: 1rem;
   }
 
-.custom-green-button {
+.tutorial-custom-green-button {
     color: #131515;
     background-color: #61FF7E;
     border: none;
@@ -97,11 +102,11 @@ textarea {
     border-radius: 4px; 
 }
 
-.fieldset-post-form {
+.tutorial-fieldset-post-form {
     border: none;
 }
 
-.title-input {
+.tutorial-title-input {
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
@@ -110,17 +115,17 @@ textarea {
     width: 60%;
 }
 
-.create-post-form {
+.tutorial-create-post-form {
     background-color: #EBE1E3;
     width: 80%;
     padding: 1rem;
 }
-.create-post-column{
+.tutorial-create-post-column{
     width: 60%;
     padding: 1rem;
 }
 
-.published-drafts-list {
+.tutorial-published-drafts-list {
     background-color: #EBE1E3;
     height: 500px;
     width: 400px;
@@ -128,12 +133,12 @@ textarea {
     padding: 2rem;
 }
 
-.published-feed-column {
+.tutorial-published-feed-column {
     width: 40%;
     padding: 1rem;
 }
 
-.emend-button {
+.tutorial-emend-button {
     color:#6558F5;
     border: 1px solid #6558F5;
     text-align: center;
@@ -142,7 +147,7 @@ textarea {
     border-radius: 4px;
 }
 
-.excise-button {
+.tutorial-excise-button {
     color:#FF101F;
     border: 1px solid #FF101F;
     text-align: center;

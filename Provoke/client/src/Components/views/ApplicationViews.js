@@ -19,6 +19,7 @@ export default function ApplicationViews() {
     }, []);
 //    const localUser = localStorage.getItem("user")
 //    const localUserObject = JSON.parse(localUser)
+//    console.log(localUserObject.normalMode);
 //    console.log(localUser.normalMode);
 
     return (

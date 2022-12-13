@@ -86,7 +86,7 @@ export const NormalView = () => {
         <div className="normal-body">
             <div className="create-post-form">
             <div className="compose-header">
-                <h1>Compose</h1>
+                <h1 className="headline-styling">Compose</h1>
                 <div className="quote-card">
                 <div><i>{oneQuote.quote}</i> <b>-- {oneQuote.author}</b></div>
                 </div>
