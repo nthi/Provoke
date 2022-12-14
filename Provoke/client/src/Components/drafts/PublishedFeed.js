@@ -10,7 +10,7 @@ export const PublishedFeed = ({ publishedDrafts }) => {
     return (
         <>
             <div className="published-feed-column">
-            <h1>Browse</h1>
+            <h1 className="headline-styling">Browse</h1>
             <div className="published-drafts-list">
                 {
                 publishedDrafts.map(

@@ -1,7 +1,8 @@
 import React, {useEffect, useState } from 'react';
-import { NavLink as RRNavLink } from "react-router-dom";
+import { Link, NavLink as RRNavLink } from "react-router-dom";
 import { getCurrentUser, logout } from '../../Managers/UserManager';
 import "./NavBar.css"
+import TutorialNavBar from './TutorialNavBar';
 // import {
 //     Collapse,
 //     Navbar,
@@ -21,11 +22,39 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
       const loggedInUser = getCurrentUser()
       setLocalUser(loggedInUser)
     }, [isLoggedIn]);
-  
+
+
+  // if (localUser.normalMode === true) {
+  //     return (
+  //       <>
+  //         <div className="normal-view-navbar">
+  //             <h1 className="nav-logo">Provoke</h1>
+  //         </div>
+  //         {/* <div className="navbar-links">
+  //             <a className="logout"onClick={() => {logout()
+  //             setIsLoggedIn(false)
+  //             }}>Log Out</a>
+  //         </div> */}
+  //       </>
+  //     )
+  //   } else {
+  //     return (
+  //       <TutorialNavBar />
+  //     )
+  //   }
+
     return (
+      <>
         <div className="normal-view-navbar">
-            <h1 className="nav-logo">Provoke</h1>
+          <h1 className="nav-logo">Provoke</h1>
+          <div className="navbar links">
+                <button className="logout"onClick={() => {logout()
+                setIsLoggedIn(false)
+                }}>Log Out</button>
+          </div>
         </div>
-    );
+
+      </>
+    )
   }
   

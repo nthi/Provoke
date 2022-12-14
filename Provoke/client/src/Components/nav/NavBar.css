@@ -13,6 +13,18 @@
     font-family: 'Arsenal', sans-serif;
 }
 
+.logout {
+    color:#EBE1E3;
+    background-color: #0D681A;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px; 
+    margin-right: 3rem;
+    margin-top: 1.5rem;
+}
+
 /* font-family: 'Architects Daughter', cursive;
 font-family: 'Arsenal', sans-serif;
 font-family: 'Catamaran', sans-serif;

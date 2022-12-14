@@ -23,9 +23,16 @@ export default function TutorialNavBar({ isLoggedIn, setIsLoggedIn}) {
     }, [isLoggedIn]);
   
     return (
-        <div className="tutorial-view-navbar">
-            <h1 className="tutorial-nav-logo">Prevoke</h1>
-        </div>
+      <>
+      <div className="normal-view-navbar">
+          <h1 className="nav-logo">Provoke</h1>
+      </div>
+      {/* <div className="navbar links">
+          <a className="logout"onClick={() => {logout()
+          setIsLoggedIn(false)
+          }}>Log Out</a>
+      </div> */}
+    </>
     );
   }
   
