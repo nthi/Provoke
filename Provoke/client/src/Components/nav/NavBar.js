@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { NavLink as RRNavLink } from "react-router-dom";
+import { Link, NavLink as RRNavLink } from "react-router-dom";
 import { getCurrentUser, logout } from '../../Managers/UserManager';
 import "./NavBar.css"
 import TutorialNavBar from './TutorialNavBar';
@@ -15,7 +15,7 @@ import TutorialNavBar from './TutorialNavBar';
 
 export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
     const [isOpen, setIsOpen] = useState(false);
-    // const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => setIsOpen(!isOpen);
     const [localUser, setLocalUser] = useState("");
   
     useEffect(() => {
@@ -23,11 +23,19 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
       setLocalUser(loggedInUser)
     }, [isLoggedIn]);
 
-    if (localUser.normalMode === true) {
+
+  if (localUser.normalMode === true) {
       return (
+        <>
           <div className="normal-view-navbar">
               <h1 className="nav-logo">Provoke</h1>
           </div>
+          {/* <div className="navbar links">
+              <a className="logout"onClick={() => {logout()
+              setIsLoggedIn(false)
+              }}>Log Out</a>
+          </div> */}
+        </>
       )
     } else {
       return (
