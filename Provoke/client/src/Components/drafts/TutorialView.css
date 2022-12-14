@@ -102,6 +102,16 @@ textarea {
     border-radius: 4px; 
 }
 
+.tutorial-custom-red-button {
+    color: #131515;
+    background-color: #D81E5B;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px; 
+}
+
 .tutorial-fieldset-post-form {
     border: none;
 }
@@ -156,4 +166,9 @@ textarea {
     padding: 10px 24px;
     border-radius: 4px;
     font-family: 'Comic Neue', cursive;
+}
+
+.tutorial-button-div {
+    display:flex;
+    justify-content: space-between;
 }
