@@ -1,13 +1,16 @@
-import React from "react"
-import { useEffect, useState } from "react"
-import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js"
+import React from "react";
+import { Tooltip } from "react-tooltip";
+import { useEffect, useState } from "react";
+import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js";
 import { TutorialPublishedFeed } from "./TutorialPublishedFeed"
-import "./TutorialView.css"
-import { useParams } from "react-router-dom"
-import { getCurrentUser } from "../../Managers/UserManager.js"
-import { QuoteQueue } from "./QuoteQueue.js"
-import { getAllPlaceholders } from "../../Managers/PlaceholderManager.js"
-import { Checkbox } from "./Checkbox.js"
+import "./TutorialView.css";
+import { useParams } from "react-router-dom";
+import { getCurrentUser } from "../../Managers/UserManager.js";
+import { QuoteQueue } from "./QuoteQueue.js";
+import { getAllPlaceholders } from "../../Managers/PlaceholderManager.js";
+import { Checkbox } from "./Checkbox.js";
+import 'react-tooltip/dist/react-tooltip.css'
+
 
 export const TutorialView = () => {
     //something to send draft to updated published drafts sidebar
@@ -73,10 +76,38 @@ export const TutorialView = () => {
             published: "",
             placeholderId: ""}));
     }
+
+    const hideDraft = (e) => {
+        e.preventDefault();
+        const singleDraft = {
+            userId: user.id,
+            title: newDraft.title,
+            content: newDraft.content,
+            dateCreated: new Date(),
+            published: false,
+            placeholderId: oneQuote.id
+        }
+        addDraft(singleDraft)
+            .then(() => getAllPublishedDraftsByUser())
+            .then((draftArray) => { updatePublishedDrafts(draftArray)})
+            .then(() => updateNewDraft({        
+            userId: "",
+            title: "",
+            content: "",
+            dateCreated: "",
+            published: "",
+            placeholderId: ""}));
+    }
+
     return (
         <>
         <div className="tutorial-normal-body">
-            <div className="tutorial-create-post-form">
+            <div 
+            id="compose-form-element"
+            data-tooltip-content="Welcome to PROVOKE! Try creating your first post!"
+            className="tutorial-create-post-form">
+                <Tooltip 
+                anchorId="compose-form-element"/>
             <div className="tutorial-compose-header">
                 <h1 className="tutorial-headline-styling">Compose</h1>
                 <div className="tutorial-quote-card">
@@ -85,7 +116,11 @@ export const TutorialView = () => {
             </div>
             <fieldset className="tutorial-fieldset-post-form">
                 <div>
-                    <input className="tutorial-title-input" type="text" value={newDraft.title} 
+                    <h3 className="tutorial-headline-styling">Title</h3>
+                    <input 
+                    id="title-form-element"
+                    data-tooltip-content="People usually put a title here in this box!"
+                    className="tutorial-title-input" type="text" value={newDraft.title} 
                     onChange={
                         (evt) => {
                             const copy = { ...newDraft }
@@ -93,9 +128,18 @@ export const TutorialView = () => {
                             updateNewDraft(copy)
                         }
                     } />
+                    <Tooltip 
+                anchorId="title-form-element" />
                 </div>
                 <div>
-                    <textarea name="draft" required autoFocus type="text"
+                    <h3 
+                    id="content-form-element"
+                    data-tooltip-content="This is where your text goes! Try typing it!"
+                    className="tutorial-headline-styling">Draft</h3>
+                    <textarea 
+                    id="helpful-tip-element"
+                    data-tooltip-content="If you have forgotten how to type, visit www.typing.com to learn how!"
+                    name="draft" required autoFocus type="text"
                     className="tutorial-form-control" value={newDraft.content} onChange={
                         (evt) => {
                             const copy = { ... newDraft }
@@ -104,11 +148,26 @@ export const TutorialView = () => {
                         }
                     } />
                 </div>
+                    <Tooltip 
+                anchorId="content-form-element"/>
+                <Tooltip 
+                anchorId="helpful-tip-element"/>
 
                 <div className="tutorial-checkbox-button-span">
-                <Checkbox label="Dispose" checked={true} />
+                {/* <Checkbox label="Dispose" checked={true} /> */}
+                <button id="red-button-element"
+                data-tooltip-content="CLICK HERE TO CLEAR THIS FORM"
+                className="tutorial-custom-red-button" type="submit" onClick={handleSave}>Dispose</button>
+                <Tooltip 
+                anchorId="red-button-element" />
 
-                <button className="tutorial-custom-green-button" type="submit" onClick={handleSave}>Propose</button>
+                <button id="green-button-element"
+                data-tooltip-content="CLICK HERE TO PUBLISH YOUR DRAFT"
+                className="tutorial-custom-green-button" type="submit" onClick={hideDraft}
+                // data-tip data-for="registerTip"
+                >Propose</button>
+                <Tooltip 
+                anchorId="green-button-element" />
                 
                 </div>
             </fieldset>

@@ -10,7 +10,7 @@ export const Checkbox = ( {label, checked} ) => {
                 <input type="checkbox" checked={isChecked} onChange={() => setIsChecked((prev) => !prev)} />
                 <span>{label}</span>
             </label>
-            <p className="checked-text"><i>{isChecked ? "Quote will publish with draft" : "Quote will not appear with draft"}</i></p>
+            {/* <p className="checked-text"><i>{isChecked ? "Quote will publish with draft" : "Quote will not appear with draft"}</i></p> */}
         </div>
     );
 };
