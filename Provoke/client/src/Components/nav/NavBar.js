@@ -30,7 +30,7 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
   //         <div className="normal-view-navbar">
   //             <h1 className="nav-logo">Provoke</h1>
   //         </div>
-  //         {/* <div className="navbar links">
+  //         {/* <div className="navbar-links">
   //             <a className="logout"onClick={() => {logout()
   //             setIsLoggedIn(false)
   //             }}>Log Out</a>
@@ -47,9 +47,14 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
       <>
         <div className="normal-view-navbar">
           <h1 className="nav-logo">Provoke</h1>
+          <div className="navbar links">
+                <button className="logout"onClick={() => {logout()
+                setIsLoggedIn(false)
+                }}>Log Out</button>
+          </div>
         </div>
+
       </>
     )
-  
   }
   
