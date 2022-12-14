@@ -167,3 +167,8 @@ textarea {
     border-radius: 4px;
     font-family: 'Comic Neue', cursive;
 }
+
+.tutorial-button-div {
+    display:flex;
+    justify-content: space-between;
+}

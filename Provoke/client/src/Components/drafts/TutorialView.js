@@ -108,7 +108,7 @@ export const TutorialView = () => {
             data-tooltip-content="Welcome to PROVOKE! Try creating your first post!"
             className="tutorial-create-post-form">
                 <Tooltip 
-                anchorId="compose-form-element" style={{color:"aliceblue", backgroundColor:"red", fontFamily:"'Architects Daughter'"}}/>
+                anchorId="compose-form-element" style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
             <div className="tutorial-compose-header">
                 <h1 className="tutorial-headline-styling">Compose</h1>
                 <div className="tutorial-quote-card">
@@ -130,7 +130,8 @@ export const TutorialView = () => {
                         }
                     } />
                     <Tooltip 
-                anchorId="title-form-element" />
+                anchorId="title-form-element" 
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
                 </div>
                 <div>
                     <h3 
@@ -150,9 +151,11 @@ export const TutorialView = () => {
                     } />
                 </div>
                     <Tooltip 
-                anchorId="content-form-element"/>
+                anchorId="content-form-element"
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
                 <Tooltip 
-                anchorId="helpful-tip-element"/>
+                anchorId="helpful-tip-element"
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
 
                 <div className="tutorial-checkbox-button-span">
                 {/* <Checkbox label="Dispose" checked={true} /> */}
@@ -160,7 +163,8 @@ export const TutorialView = () => {
                 data-tooltip-content="CLICK HERE TO CLEAR THIS FORM"
                 className="tutorial-custom-red-button" type="submit" onClick={handleSave}>Dispose</button>
                 <Tooltip 
-                anchorId="red-button-element" />
+                anchorId="red-button-element" 
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
 
                 <button id="green-button-element"
                 data-tooltip-content="CLICK HERE TO PUBLISH YOUR DRAFT"
@@ -168,7 +172,8 @@ export const TutorialView = () => {
                 // data-tip data-for="registerTip"
                 >Propose</button>
                 <Tooltip 
-                anchorId="green-button-element" />
+                anchorId="green-button-element" 
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
                 
                 </div>
             </fieldset>

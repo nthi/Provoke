@@ -15,10 +15,11 @@ export const TutorialPublishedFeed = ({ publishedDrafts }) => {
             <div className="tutorial-published-feed-column">
             <h1 
             id="browse-element"
-            data-tooltip-content="Look at all your posts! Use the scrollbar to see more of them."
+            data-tooltip-content="Look at all your posts! You can use the scrollbar!"
             className="tutorial-headline-styling">Browse</h1>
             <Tooltip 
-                anchorId="browse-element" />
+                anchorId="browse-element" 
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20" />
             <div className="tutorial-published-drafts-list">
                 {
                 publishedDrafts.map(
@@ -39,7 +40,8 @@ export const TutorialPublishedFeed = ({ publishedDrafts }) => {
                             Emend
                         </button>
                         <Tooltip 
-                anchorId="emend-button-element" />
+                anchorId="emend-button-element" 
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
                         <button 
                          id="excise-button-element"
                          data-tooltip-content="CLICK HERE TO EXCISE POST (that means 'Delete')"
@@ -47,7 +49,8 @@ export const TutorialPublishedFeed = ({ publishedDrafts }) => {
                             Excise
                         </button>
                         <Tooltip 
-                anchorId="excise-button-element" />
+                anchorId="excise-button-element" 
+                style={{color:"#D81E5B", fontSize:"1rem", backgroundColor:"#E0FF4F", fontFamily:"'Press Start 2P', cursive", margin:"1rem"}} offset="20"/>
                     </div>                  
                     </> 
                 )
