@@ -98,6 +98,7 @@ export const TutorialView = () => {
             published: "",
             placeholderId: ""}));
     }
+ 
 
     return (
         <>
@@ -107,7 +108,7 @@ export const TutorialView = () => {
             data-tooltip-content="Welcome to PROVOKE! Try creating your first post!"
             className="tutorial-create-post-form">
                 <Tooltip 
-                anchorId="compose-form-element"/>
+                anchorId="compose-form-element" style={{color:"aliceblue", backgroundColor:"red", fontFamily:"'Architects Daughter'"}}/>
             <div className="tutorial-compose-header">
                 <h1 className="tutorial-headline-styling">Compose</h1>
                 <div className="tutorial-quote-card">
