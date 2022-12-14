@@ -40,17 +40,17 @@ font-family: 'Signika Negative', sans-serif; */
   background: #E0FF4F; 
 }
 
-/* h1, h3 {
+.tutorial-headline-styling {
     font-family: 'Luckiest Guy', cursive;
     color: #FF101F;
-}  */
+} 
 
 .tutorial-headline-styling {
     font-family: 'Luckiest Guy', cursive;
     color: #FF101F;
 }
 
-p {
+.tutorial-paragraph-styling {
     font-family: 'Comic Neue', cursive;
 }
 
@@ -145,6 +145,7 @@ textarea {
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
+    font-family: 'Comic Neue', cursive;
 }
 
 .tutorial-excise-button {
@@ -154,4 +155,5 @@ textarea {
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
+    font-family: 'Comic Neue', cursive;
 }

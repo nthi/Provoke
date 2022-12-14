@@ -75,17 +75,17 @@ export const TutorialView = () => {
     }
     return (
         <>
-        <div className="normal-body">
-            <div className="create-post-form">
-            <div className="compose-header">
-                <h1>Compose</h1>
-                <div className="quote-card">
+        <div className="tutorial-normal-body">
+            <div className="tutorial-create-post-form">
+            <div className="tutorial-compose-header">
+                <h1 className="tutorial-headline-styling">Compose</h1>
+                <div className="tutorial-quote-card">
                 <div><i>{oneQuote.quote}</i> <b>-- {oneQuote.author}</b></div>
                 </div>
             </div>
-            <fieldset className="fieldset-post-form">
+            <fieldset className="tutorial-fieldset-post-form">
                 <div>
-                    <input className="title-input" type="text" value={newDraft.title} 
+                    <input className="tutorial-title-input" type="text" value={newDraft.title} 
                     onChange={
                         (evt) => {
                             const copy = { ...newDraft }
@@ -96,7 +96,7 @@ export const TutorialView = () => {
                 </div>
                 <div>
                     <textarea name="draft" required autoFocus type="text"
-                    className="form-control" value={newDraft.content} onChange={
+                    className="tutorial-form-control" value={newDraft.content} onChange={
                         (evt) => {
                             const copy = { ... newDraft }
                             copy.content = evt.target.value
@@ -105,10 +105,10 @@ export const TutorialView = () => {
                     } />
                 </div>
 
-                <div className="checkbox-button-span">
+                <div className="tutorial-checkbox-button-span">
                 <Checkbox label="Dispose" checked={true} />
 
-                <button className="custom-green-button" type="submit" onClick={handleSave}>Propose</button>
+                <button className="tutorial-custom-green-button" type="submit" onClick={handleSave}>Propose</button>
                 
                 </div>
             </fieldset>

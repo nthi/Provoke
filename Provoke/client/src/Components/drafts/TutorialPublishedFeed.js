@@ -1,32 +1,32 @@
 //this module creates the published drafts feed for the sidebar of NormalView.js
 import { useEffect, useState } from "react"
 import { Button } from "./Button"
-import { Draft } from "./draft"
+import { TutorialDraft } from "./TutorialDraft"
 
 export const TutorialPublishedFeed = ({ publishedDrafts }) => {
 
 
     return (
         <>
-            <div className="published-feed-column">
-            <h1>Browse</h1>
-            <div className="published-drafts-list">
+            <div className="tutorial-published-feed-column">
+            <h1 className="tutorial-headline-styling">Browse</h1>
+            <div className="tutorial-published-drafts-list">
                 {
                 publishedDrafts.map(
                     (draft) =>
                     <>
-                    <Draft draftId={`published--${draft.id}`}
+                    <TutorialDraft draftId={`published--${draft.id}`}
                     quote={draft.placeholder.quote}
                     author={draft.placeholder.author}
                     title={draft.title}
                     content={draft.content}
                     />
 
-                    <div className="button-div">
-                        <button className="emend-button">
+                    <div className="tutorial-button-div">
+                        <button className="tutorial-emend-button">
                             Emend
                         </button>
-                        <button className="excise-button">
+                        <button className="tutorial-excise-button">
                             Excise
                         </button>
                     </div>                  

@@ -24,24 +24,32 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn}) {
     }, [isLoggedIn]);
 
 
-  if (localUser.normalMode === true) {
-      return (
-        <>
-          <div className="normal-view-navbar">
-              <h1 className="nav-logo">Provoke</h1>
-          </div>
-          {/* <div className="navbar links">
-              <a className="logout"onClick={() => {logout()
-              setIsLoggedIn(false)
-              }}>Log Out</a>
-          </div> */}
-        </>
-      )
-    } else {
-      return (
-        <TutorialNavBar />
-      )
-    }
+  // if (localUser.normalMode === true) {
+  //     return (
+  //       <>
+  //         <div className="normal-view-navbar">
+  //             <h1 className="nav-logo">Provoke</h1>
+  //         </div>
+  //         {/* <div className="navbar links">
+  //             <a className="logout"onClick={() => {logout()
+  //             setIsLoggedIn(false)
+  //             }}>Log Out</a>
+  //         </div> */}
+  //       </>
+  //     )
+  //   } else {
+  //     return (
+  //       <TutorialNavBar />
+  //     )
+  //   }
+
+    return (
+      <>
+        <div className="normal-view-navbar">
+          <h1 className="nav-logo">Provoke</h1>
+        </div>
+      </>
+    )
   
   }
   
