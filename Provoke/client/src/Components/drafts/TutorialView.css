@@ -207,3 +207,29 @@ textarea {
     font-size: larger;
     font-family: 'Comic Neue', cursive;
 }
+
+.tutorial-mode-end-div {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    background-color: #D81E5B;
+}
+
+.tutorial-explainer {
+    color:#E0FF4F;
+    font-size: 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.tutorial-end-button {
+    color: #61FF7E;
+    background-color: #6558F5;
+    font-family: 'Rubik Vinyl', cursive;
+    background-color: none;
+    border: 3px solid #E0FF4F;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 10px 24px;
+    border-radius: 4px;
+    margin-left: 1rem;
+}
