@@ -4,10 +4,10 @@ import { deleteDraft, editDraft, getAllUnPublishedDraftsByUser, getDraftById } f
 
 
 export const TutorialDeleteDraft = () => {
-    const [oneUnpublishedDraft, setOneUnpublishedDraft] = useState({
-        title: undefined,
-        content: undefined
-    });
+    // const [oneUnpublishedDraft, setOneUnpublishedDraft] = useState({
+    //     title: undefined,
+    //     content: undefined
+    // });
     const [draft, setDraft] = useState({});
 
     const navigate = useNavigate();
@@ -21,34 +21,33 @@ export const TutorialDeleteDraft = () => {
         []
     )
 
-    useEffect(
-        () => {
-            getAllUnPublishedDraftsByUser()
-                .then((draftTaco) => {
-                    let unpublishedOne = draftTaco[0]
-                    setOneUnpublishedDraft(unpublishedOne)
-                })
-        },
-        []
-    )
+    // useEffect(
+    //     () => {
+    //         getAllUnPublishedDraftsByUser()
+    //             .then((draftTaco) => {
+    //                 let unpublishedOne = draftTaco[0]
+    //                 setOneUnpublishedDraft(unpublishedOne)
+    //             })
+    //     },
+    //     []
+    // )
 
-    const editOneUnpublishedDraft = () => {
-        const updatedDraft = {
-            id: oneUnpublishedDraft.id,
-            userId: oneUnpublishedDraft.userId,
-            title: oneUnpublishedDraft.title,
-            content: oneUnpublishedDraft.content,
-            dateCreated: oneUnpublishedDraft.dateCreated,
-            published: true,
-            placeholderId: oneUnpublishedDraft.placeholderId
-        }
-        editDraft(updatedDraft)
-    }
+    // const editOneUnpublishedDraft = () => {
+    //     const updatedDraft = {
+    //         id: oneUnpublishedDraft.id,
+    //         userId: oneUnpublishedDraft.userId,
+    //         title: oneUnpublishedDraft.title,
+    //         content: oneUnpublishedDraft.content,
+    //         dateCreated: oneUnpublishedDraft.dateCreated,
+    //         published: true,
+    //         placeholderId: oneUnpublishedDraft.placeholderId
+    //     }
+    //     editDraft(updatedDraft)
+    // }
 
     //currently this does delete the post and navigate back to "/" but it does not edit the unpublished draft to update "published" to true. I know that updatedDraft exists in the component, but something is not connecting with the edit. What I want to see is the oneUnpublishedDraft to publish and already be in published feed by the time user navigates back to that view.
     const handleDelete = () => {
         deleteDraft(draft.id)
-            .then(editOneUnpublishedDraft())
             .then(() => {
                 navigate("/")
             })

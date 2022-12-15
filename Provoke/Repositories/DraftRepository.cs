@@ -196,11 +196,13 @@ namespace Provoke.Repositories
                             UPDATE Draft
                                     SET
                                           title = @title,
-                                          content = @content
+                                          content = @content,
+                                          published =@published
                                     WHERE id = @id";
 
                     cmd.Parameters.AddWithValue("@title", draft.title);
                     cmd.Parameters.AddWithValue("@content", draft.content);
+                    cmd.Parameters.AddWithValue("@published", draft.published);
                     cmd.Parameters.AddWithValue("@id", draft.id);
 
                     cmd.ExecuteNonQuery();
