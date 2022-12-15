@@ -172,3 +172,34 @@ textarea {
     display:flex;
     justify-content: space-between;
 }
+
+.tutorial-delete-sure {
+    font-family: 'Luckiest Guy', cursive;
+    color: #FF101F;
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+
+.tutorial-delete-button {
+    color:#FF101F;
+    background-color: none;
+    border: 1px solid #FF101F;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-family: 'Comic Neue', cursive;
+}
+
+.tutorial-delete-takeback-span {
+    display: flex;
+    width: 50%;
+    justify-content:space-between;
+    margin-left: 3rem;
+}
+
+.tutorial-take-back {
+    color:#6558F5;
+    font-size: larger;
+    font-family: 'Comic Neue', cursive;
+}
