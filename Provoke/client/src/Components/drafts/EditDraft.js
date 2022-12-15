@@ -77,7 +77,3 @@ export const EditDraft = () => {
 
 }
 
-// type="submit" className="btn btn-primary mt-2 mr-5" onClick={saveDraftEdit}
-
-
-

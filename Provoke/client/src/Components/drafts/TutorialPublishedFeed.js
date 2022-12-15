@@ -4,9 +4,39 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "./Button"
 import { TutorialDraft } from "./TutorialDraft"
 import { Tooltip } from "react-tooltip";
+import { editDraft, getAllUnPublishedDraftsByUser } from "../../Managers/DraftManager";
 
 
 export const TutorialPublishedFeed = ({ publishedDrafts }) => {
+    const [oneUnpublishedDraft, setOneUnpublishedDraft] = useState({
+        title: undefined,
+        content: undefined
+    });
+
+    useEffect(
+        () => {
+            getAllUnPublishedDraftsByUser()
+                .then((draftTaco) => {
+                    let unpublishedOne = draftTaco[0]
+                    setOneUnpublishedDraft(unpublishedOne)
+                })
+        },
+        []
+    )
+
+    const editOneUnpublishedDraft = () => {
+        const updatedDraft = {
+            id: oneUnpublishedDraft.id,
+            userId: oneUnpublishedDraft.userId,
+            title: oneUnpublishedDraft.title,
+            content: oneUnpublishedDraft.content,
+            dateCreated: oneUnpublishedDraft.dateCreated,
+            published: true,
+            placeholderId: oneUnpublishedDraft.placeholderId
+        }
+        // debugger
+        return editDraft(updatedDraft)
+    }
 
     const navigate = useNavigate();
 
@@ -45,7 +75,11 @@ export const TutorialPublishedFeed = ({ publishedDrafts }) => {
                         <button 
                          id="excise-button-element"
                          data-tooltip-content="CLICK HERE TO EXCISE POST (that means 'Delete')"
-                        className="tutorial-excise-button" onClick={() => navigate(`/deletedraft/${draft.id}`)}>
+                        className="tutorial-excise-button" onClick={() => {
+                            editOneUnpublishedDraft()
+                            .then(() => {
+                                navigate(`/deletedraft/${draft.id}`)
+                            })}}>
                             Excise
                         </button>
                         <Tooltip 
