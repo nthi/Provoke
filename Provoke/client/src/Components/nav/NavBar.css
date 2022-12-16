@@ -2,21 +2,22 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #0D681A;
-    background-color: #CABAC8;
+    color: #EBE1E3;
+    background-color: #36558f;
+    ;
     padding-left: 3rem;
-    font-family: 'Arsenal', sans-serif;
+    font-family: 'Catamaran', sans-serif;
 }
 
 .nav-logo {
-    color: #0D681A;
-    font-family: 'Arsenal', sans-serif;
+    color: #EBE1E3;
+    font-family: 'Catamaran', sans-serif;
 }
 
 .logout {
-    color:#EBE1E3;
-    background-color: #0D681A;
-    border: none;
+    color: #36558f;
+    background-color: #EBE1E3;
+    border: 1px solid #454949;
     text-align: center;
     font-size: 14px;
     padding: 10px 24px;

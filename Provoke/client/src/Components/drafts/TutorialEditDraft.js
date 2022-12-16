@@ -66,7 +66,7 @@ export const TutorialEditDraft = () => {
                 </div>
                 <div>
                     <textarea name="draft" required autoFocus type="text"
-                    className="form-control" value={draft.content} onChange={
+                    className="tutorial-form-control" value={draft.content} onChange={
                         (evt) => {
                             const copy = { ... draft }
                             copy.content = evt.target.value
