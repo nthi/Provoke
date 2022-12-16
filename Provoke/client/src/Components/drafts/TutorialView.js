@@ -4,20 +4,18 @@ import { useEffect, useState } from "react";
 import { addDraft, getAllPublishedDraftsByUser } from "../../Managers/DraftManager.js";
 import { TutorialPublishedFeed } from "./TutorialPublishedFeed"
 import "./TutorialView.css";
-import { useParams } from "react-router-dom";
-import { getCurrentUser } from "../../Managers/UserManager.js";
+import { useNavigate, useParams } from "react-router-dom";
+import { getCurrentUser, updateUserMode } from "../../Managers/UserManager.js";
 import { QuoteQueue } from "./QuoteQueue.js";
 import { getAllPlaceholders } from "../../Managers/PlaceholderManager.js";
 import { Checkbox } from "./Checkbox.js";
 import 'react-tooltip/dist/react-tooltip.css'
 
 
-export const TutorialView = () => {
-    //something to send draft to updated published drafts sidebar
+export const TutorialView = ( {setLocalUser}) => {
+    const navigate = useNavigate();
     const [publishedDrafts, updatePublishedDrafts] = useState([])
-    // const [queQuote, updateQueQuote] = useState([]);
     const [oneQuote, setOneQuote] = useState([]);
-    // const[filteredPlaceholders, setFilteredPlaceholders] = useState([])
 
     useEffect(() => {
         getAllPlaceholders()
@@ -28,17 +26,30 @@ export const TutorialView = () => {
         })
     }, []);
 
-    // console.log(placeholders);
-
-    // console.log(placeholders);
-    //if the user needs to see it, go in state. if we don't need to see it, don't put in state.
-    //use effect needs to just set one quote, so not placeholderS, just placeholder.
-    // let quotelist = placeholders.filter(placeholder => placeholder.id !== 8);
-    // let randomQuote = quotelist[Math.floor(Math.random() * quotelist.length)];
-    // console.log(placeholders);
-
-
     const user = getCurrentUser();
+
+    const updateStorage = (userToApi) => {
+        return updateUserMode(userToApi)
+    }
+
+    const handleTutorialEnd = (e) => {
+        e.preventDefault();
+        const updateUser = {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            userName: user.userName,
+            email: user.email,
+            normalMode: true
+        }
+        updateStorage(updateUser)
+        .then(() => {
+                // change user in local storage to be updated user
+                localStorage.setItem("user", JSON.stringify(updateUser));
+                console.log("here we are in the .then()!!");
+                setLocalUser(updateUser);
+        })
+    }
 
     const [newDraft, updateNewDraft] = useState({
         userId: "",
@@ -98,10 +109,16 @@ export const TutorialView = () => {
             published: "",
             placeholderId: ""}));
     }
- 
+    
 
     return (
         <>
+        <div className="tutorial-mode-end-div">
+            <div className="tutorial-explainer">
+            When you're done with tutorial mode, click
+            </div>
+            <button className="tutorial-end-button" onClick={handleTutorialEnd}>THE BUTTON</button>
+        </div>
         <div className="tutorial-normal-body">
             <div 
             id="compose-form-element"

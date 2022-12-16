@@ -20,17 +20,17 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #a6d8ae; 
+  background: #bad7f2; 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #67936d; 
+  background: #36558f; 
 }
 
 .headline-styling {
-    color: #0D681A;
+    color: #36558f;
 }
 
 .paragraph-styling {
@@ -38,13 +38,13 @@
 }
 
 .quote-card {
-    color:#0D681A;
+    color: #36558f;
     font-size: .9rem;
 }
 
 .single-draft {
     margin-top: 3rem;
-    border-top: 1px solid #a6d8ae;
+    border-top: 1px solid #bad7f2;
     margin-bottom: 1rem;
 }
 
@@ -62,7 +62,11 @@
     margin-left: 1rem;
 }
 
-textarea {
+.form-control {
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: .05em;
+    color: black;
+    font-size: larger;
     width: 100%;
     height: 500px;
     padding: 12px 20px;
@@ -76,12 +80,18 @@ textarea {
 
 .custom-green-button {
     color:#EBE1E3;
-    background-color: #0D681A;
+    background-color: #36558f;
     border: none;
     text-align: center;
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px; 
+    box-shadow: 0 3px #999;
+}
+
+.custom-green-button:active{
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .fieldset-post-form {
@@ -89,6 +99,10 @@ textarea {
 }
 
 .title-input {
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: .05em;
+    color: black;
+    font-size: large;
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
@@ -131,22 +145,35 @@ textarea {
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
+    box-shadow: 0 3px #999;
+
+}
+
+.edit-button:active{
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .delete-sure {
-    
+    color: #36558f;
     margin-top: 3rem;
     margin-left: 3rem;
 }
 
 .delete-button {
     color:#FF101F;
-    /* background-color: #FF101F; */
+    background-color: none;
     border: 1px solid #FF101F;
     text-align: center;
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
+    box-shadow: 0 3px #999;
+
+}
+.delete-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .delete-takeback-span {
