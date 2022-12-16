@@ -40,13 +40,14 @@ font-family: 'Signika Negative', sans-serif; */
   background: #E0FF4F; 
 } */
 
-.tutorial-headline-styling {
+/* .tutorial-headline-styling {
     font-family: 'Luckiest Guy', cursive;
     color: #FF101F;
-} 
+}  */
 
 .tutorial-headline-styling {
     font-family: 'Luckiest Guy', cursive;
+    letter-spacing: .1em;
     color: #FF101F;
 }
 
@@ -107,7 +108,12 @@ font-family: 'Signika Negative', sans-serif; */
     padding: 10px 24px;
     border-radius: 4px; 
     font-family: 'Comic Neue', cursive;
+    box-shadow: 0 3px #999;
+}
 
+.tutorial-custom-green-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .tutorial-custom-red-button {
@@ -118,6 +124,13 @@ font-family: 'Signika Negative', sans-serif; */
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px; 
+    box-shadow: 0 3px #999;
+
+}
+
+.tutorial-custom-red-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .tutorial-fieldset-post-form {
@@ -167,7 +180,12 @@ font-family: 'Signika Negative', sans-serif; */
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
-    font-family: 'Comic Neue', cursive;
+    box-shadow: 0 3px #999;
+}
+
+.tutorial-emend-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .tutorial-excise-button {
@@ -178,6 +196,12 @@ font-family: 'Signika Negative', sans-serif; */
     padding: 10px 24px;
     border-radius: 4px;
     font-family: 'Comic Neue', cursive;
+    box-shadow: 0 3px #999;
+}
+
+.tutorial-excise-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .tutorial-button-div {
@@ -192,6 +216,24 @@ font-family: 'Signika Negative', sans-serif; */
     margin-left: 3rem;
 }
 
+.tutorial-end-button {
+    color: #E0FF4F;
+    background-color: #6558F5;
+    font-family: 'Dokdo', cursive;
+    background-color: none;
+    border: 3px solid #E0FF4F;
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 1px 1px;
+    border-radius: 4px;
+    margin-left: 1rem;
+    box-shadow: 0 3px #999;
+}
+
+.tutorial-end-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+}
 .tutorial-delete-button {
     color:#FF101F;
     background-color: none;
@@ -201,6 +243,12 @@ font-family: 'Signika Negative', sans-serif; */
     padding: 10px 24px;
     border-radius: 4px;
     font-family: 'Comic Neue', cursive;
+    box-shadow: 0 3px #999;
+}
+
+.tutorial-delete-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .tutorial-delete-takeback-span {
@@ -227,17 +275,4 @@ font-family: 'Signika Negative', sans-serif; */
     color:#E0FF4F;
     font-size: 1.5rem;
     font-family: 'Press Start 2P', cursive;
-}
-
-.tutorial-end-button {
-    color: #E0FF4F;
-    background-color: #6558F5;
-    font-family: 'Dokdo', cursive;
-    background-color: none;
-    border: 3px solid #E0FF4F;
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 1px 1px;
-    border-radius: 4px;
-    margin-left: 1rem;
 }

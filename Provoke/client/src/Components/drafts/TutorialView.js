@@ -12,16 +12,10 @@ import { Checkbox } from "./Checkbox.js";
 import 'react-tooltip/dist/react-tooltip.css'
 
 
-export const TutorialView = () => {
+export const TutorialView = ( {setLocalUser}) => {
     const navigate = useNavigate();
-    //something to send draft to updated published drafts sidebar
     const [publishedDrafts, updatePublishedDrafts] = useState([])
-    // const [queQuote, updateQueQuote] = useState([]);
     const [oneQuote, setOneQuote] = useState([]);
-    // const[filteredPlaceholders, setFilteredPlaceholders] = useState([])
-    // const [user, setUser] = useState({
-    //     normalMode: undefined
-    // })
 
     useEffect(() => {
         getAllPlaceholders()
@@ -32,17 +26,14 @@ export const TutorialView = () => {
         })
     }, []);
 
-    // useEffect(
-    //     () => {
-    //         getCurrentUser()
-    //             .then((thisUser) => {setUser(thisUser)})
-    //     },
-    //     []
-    // )
-
     const user = getCurrentUser();
 
-    const handleTutorialEnd = () => {
+    const updateStorage = (userToApi) => {
+        return updateUserMode(userToApi)
+    }
+
+    const handleTutorialEnd = (e) => {
+        e.preventDefault();
         const updateUser = {
             id: user.id,
             firstName: user.firstName,
@@ -51,8 +42,13 @@ export const TutorialView = () => {
             email: user.email,
             normalMode: true
         }
-        return updateUserMode(updateUser);
-        navigate("/")
+        updateStorage(updateUser)
+        .then(() => {
+                // change user in local storage to be updated user
+                localStorage.setItem("user", JSON.stringify(updateUser));
+                console.log("here we are in the .then()!!");
+                setLocalUser(updateUser);
+        })
     }
 
     const [newDraft, updateNewDraft] = useState({

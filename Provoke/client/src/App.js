@@ -25,6 +25,7 @@ function App() {
     }
   },[isLoggedIn])
 
+  //do i need to pass down isLoggedIn/setIsLoggedIn all the way down to Tutorial Views so I can refresh state? Would that talk back upward to ApplicationViews?
   return (
     <Router>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>

@@ -114,7 +114,7 @@ export const NormalView = () => {
                 </div>
 
                 <div className="checkbox-button-span">
-                <Checkbox label="Remove quotation" checked={true} />
+                {/* <Checkbox label="Remove quotation" checked={true} /> */}
 
                 <button className="custom-green-button" type="submit" onClick={handleSave}>Publish</button>
                 

@@ -33,7 +33,7 @@ export default function ApplicationViews() {
         :
             <Routes>
                 <Route path="*" element={<Navigate to="/" />} />
-                <Route path="/" element={<TutorialView  />} />
+                <Route path="/" element={<TutorialView setLocalUser={setLocalUser}  />} />
                 <Route path="/editdraft/:id" element={<TutorialEditDraft  />} />
                 <Route path="/deletedraft/:id" element={<TutorialDeleteDraft  />} />
             </Routes>           

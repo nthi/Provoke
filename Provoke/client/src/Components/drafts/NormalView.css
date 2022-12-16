@@ -86,6 +86,12 @@
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px; 
+    box-shadow: 0 3px #999;
+}
+
+.custom-green-button:active{
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .fieldset-post-form {
@@ -139,6 +145,13 @@
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
+    box-shadow: 0 3px #999;
+
+}
+
+.edit-button:active{
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .delete-sure {
@@ -155,6 +168,12 @@
     font-size: 14px;
     padding: 10px 24px;
     border-radius: 4px;
+    box-shadow: 0 3px #999;
+
+}
+.delete-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .delete-takeback-span {
