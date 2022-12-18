@@ -107,7 +107,8 @@ export const TutorialView = ( {setLocalUser}) => {
             content: "",
             dateCreated: "",
             published: "",
-            placeholderId: ""}));
+            placeholderId: ""}))
+            .then(() => alert(`Delete Successful! Keep up the good work!`));
     }
     
 
