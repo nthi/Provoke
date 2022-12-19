@@ -1,0 +1,56 @@
+.login-image {
+    background-color: #BAD7F2;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 1.5rem;
+    color: #36558f;
+}
+
+.email-label {
+    margin-right: 3.5rem;
+}
+.password-label {
+    margin-right: 1rem;
+}
+
+.button-fieldset {
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-button {
+    background-color: #36558f;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px 24px;
+    border-radius: 4px; 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    /* font-family: 'Catamaran', sans-serif; */
+    font-family: 'Arsenal', sans-serif;
+    box-shadow: 0 3px #999;
+}
+
+.login-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+}
+
+.login-fieldset {
+    border: none;
+}
+
+.not-registered-link {
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+    font-size:large;
+}

@@ -10,6 +10,7 @@ import { QuoteQueue } from "./QuoteQueue.js";
 import { getAllPlaceholders } from "../../Managers/PlaceholderManager.js";
 import { Checkbox } from "./Checkbox.js";
 import 'react-tooltip/dist/react-tooltip.css'
+import { toast } from "react-toastify";
 
 
 export const TutorialView = ( {setLocalUser}) => {
@@ -25,6 +26,12 @@ export const TutorialView = ( {setLocalUser}) => {
             setOneQuote(randomQuote)
         })
     }, []);
+
+    const deleteSuccess = () => toast("👏 Delete Successful! Keep up the good work!", {position: toast.POSITION.BOTTOM_CENTER});
+
+    const publishSuccess = () => toast("😇 You published! Don't give up!", {position: toast.POSITION.BOTTOM_RIGHT});
+
+    const niceClick = () => toast("😮 NICE CLICKING!", {position: toast.POSITION.TOP_CENTER});
 
     const user = getCurrentUser();
 
@@ -43,6 +50,7 @@ export const TutorialView = ( {setLocalUser}) => {
             normalMode: true
         }
         updateStorage(updateUser)
+        .then(() => niceClick())
         .then(() => {
                 // change user in local storage to be updated user
                 localStorage.setItem("user", JSON.stringify(updateUser));
@@ -85,7 +93,8 @@ export const TutorialView = ( {setLocalUser}) => {
             content: "",
             dateCreated: "",
             published: "",
-            placeholderId: ""}));
+            placeholderId: ""}))
+            .then(() => publishSuccess());
     }
 
     const hideDraft = (e) => {
@@ -108,7 +117,7 @@ export const TutorialView = ( {setLocalUser}) => {
             dateCreated: "",
             published: "",
             placeholderId: ""}))
-            .then(() => alert(`Delete Successful! Keep up the good work!`));
+            .then(() => deleteSuccess());
     }
     
 
